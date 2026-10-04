@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libravia — A Quiet Place to Read</title>
+  <meta name="description" content="Libravia is a premium digital bookstore. Discover handpicked books across every genre, curated for readers who value calm and craft.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header id="bk_navbar" class="bk_navbar">
+  <div class="bk_navbar_inner">
+
+    <!-- LEFT: Brand -->
+    <a href="index.php" class="bk_brand">
+      <span class="bk_logo">Libravia</span>
+      <span class="bk_tagline">A quiet place to read</span>
+    </a>
+
+    <!-- CENTER: Navigation -->
+    <nav class="bk_nav" id="bk_nav">
+      <a href="index.php" class="bk_nav_item bk_active">Home</a>
+      <a href="books.php" class="bk_nav_item">Books</a>
+      <a href="categories.php" class="bk_nav_item">Categories</a>
+      <a href="about.php" class="bk_nav_item">About</a>
+      <a href="contact.php" class="bk_nav_item">Contact</a>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="bk_actions">
+      <button class="bk_search_icon" aria-label="Search books" id="bk_search_btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <a href="login.php" class="bk_signin">Sign In</a>
+
+      <a href="books.php" class="bk_nav_cta">Explore Books</a>
+
+      <button class="bk_hamburger" id="bk_hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="bk_bar"></span>
+        <span class="bk_bar"></span>
+        <span class="bk_bar"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="bk_mobile_panel" id="bk_mobile_panel">
+    <div class="bk_mobile_inner">
+      <a href="index.php" class="bk_nav_item bk_active">Home</a>
+      <a href="books.php" class="bk_nav_item">Books</a>
+      <a href="categories.php" class="bk_nav_item">Categories</a>
+      <a href="about.php" class="bk_nav_item">About</a>
+      <a href="contact.php" class="bk_nav_item">Contact</a>
+
+      <div class="bk_mobile_actions">
+        <a href="login.php" class="bk_mobile_signin">Sign In</a>
+        <a href="books.php" class="bk_nav_cta bk_mobile_cta">Explore Books</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH PANEL -->
+  <div class="bk_search_panel" id="bk_search_panel">
+    <div class="bk_search_inner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        type="text"
+        class="bk_search_input"
+        placeholder="Search by title, author, or ISBN…"
+        aria-label="Search books"
+      >
+      <button class="bk_search_close" id="bk_search_close" aria-label="Close search">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
