@@ -277,3 +277,41 @@
   });
 
 })();
+
+
+
+
+// categories section code 
+(function () {
+  'use strict';
+
+  var filters = document.querySelectorAll('.bk_category_filter');
+  var cards = document.querySelectorAll('.bk_category_card');
+
+  if (!filters.length || !cards.length) return;
+
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var filter = this.dataset.filter;
+
+      // Active state
+      filters.forEach(function (b) {
+        b.classList.remove('bk_cat_filter_active');
+      });
+      this.classList.add('bk_cat_filter_active');
+
+      // Show / hide cards
+      cards.forEach(function (card) {
+        var tags = (card.dataset.tags || '').split(' ');
+        var match = filter === 'all' || tags.indexOf(filter) !== -1;
+
+        if (match) {
+          card.classList.remove('bk_category_hidden');
+        } else {
+          card.classList.add('bk_category_hidden');
+        }
+      });
+    });
+  });
+
+})();
