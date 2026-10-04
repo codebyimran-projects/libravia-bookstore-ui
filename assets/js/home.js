@@ -229,3 +229,51 @@
   requestAnimationFrame(frame);
 
 })();
+
+
+// feature book section 
+(function () {
+  'use strict';
+
+  var chips = document.querySelectorAll('.bk_filter_chip');
+  var cards = document.querySelectorAll('.bk_book_card');
+  var emptyEl = document.getElementById('bk_book_empty');
+
+  if (!chips.length || !cards.length) return;
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var filter = this.dataset.filter;
+
+      chips.forEach(function (c) { c.classList.remove('bk_chip_active'); });
+      this.classList.add('bk_chip_active');
+
+      var visible = 0;
+
+      cards.forEach(function (card) {
+        var match = filter === 'all' || card.dataset.category === filter;
+
+        if (match) {
+          card.style.display = '';
+          void card.offsetWidth;
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+          visible++;
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(8px)';
+          setTimeout(function () {
+            if (card.dataset.category !== filter && filter !== 'all') {
+              card.style.display = 'none';
+            }
+          }, 200);
+        }
+      });
+
+      if (emptyEl) {
+        emptyEl.hidden = visible > 0;
+      }
+    });
+  });
+
+})();

@@ -180,6 +180,284 @@
 
   </div>
 </section>
+
+
+
+<!-- ============================================================
+     LIBRAVIA — FEATURED BOOKS SECTION
+     Curated collection grid · real book covers
+     ============================================================ -->
+
+<section id="bk_featured_section" class="bk_featured_section">
+  <div class="bk_featured_container">
+
+    <!-- ===== SECTION HEADER ===== -->
+    <div class="bk_section_header">
+      <div class="bk_section_header_left">
+        <span class="bk_section_label">Curated Collection</span>
+        <h2 class="bk_section_title">Featured Books</h2>
+        <p class="bk_section_subtitle">
+          Handpicked reads for your next quiet moment.
+        </p>
+      </div>
+
+      <a href="books.php" class="bk_section_viewall">
+        <span>View All Books</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <!-- ===== FILTER CHIPS ===== -->
+    <div class="bk_filter_chips" id="bk_filter_chips">
+      <button class="bk_filter_chip bk_chip_active" data-filter="all">All</button>
+      <button class="bk_filter_chip" data-filter="fiction">Fiction</button>
+      <button class="bk_filter_chip" data-filter="nonfiction">Non-fiction</button>
+      <button class="bk_filter_chip" data-filter="fantasy">Fantasy</button>
+      <button class="bk_filter_chip" data-filter="business">Business</button>
+    </div>
+
+    <!-- ===== BOOK GRID ===== -->
+    <div class="bk_book_grid" id="bk_book_grid">
+
+      <!-- Card 1 -->
+      <a href="book.php?id=1" class="bk_book_card" data-category="fiction">
+        <div class="bk_book_cover">
+          <!-- fallback gradient (behind the image) -->
+          <div class="bk_book_cover_bg bk_cover_1">
+            <span class="bk_book_cover_genre">Fiction</span>
+            <span class="bk_book_cover_title">The Quiet<br>Hour</span>
+            <span class="bk_book_cover_author">E. M. Hale</span>
+          </div>
+
+          <!-- real book cover image -->
+          <img
+            class="bk_book_cover_img"
+            src="https://covers.openlibrary.org/b/id/10521443-L.jpg"
+            alt="The Quiet Hour — book cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none';"
+          >
+
+          <span class="bk_book_cover_spine"></span>
+          <span class="bk_book_cover_shine"></span>
+          <span class="bk_book_cover_price">$24.00</span>
+        </div>
+
+        <div class="bk_book_info">
+          <span class="bk_book_tag">Fiction</span>
+          <h3 class="bk_book_title">The Quiet Hour</h3>
+          <span class="bk_book_author">by E. M. Hale</span>
+        </div>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="book.php?id=2" class="bk_book_card" data-category="nonfiction">
+        <div class="bk_book_cover">
+          <div class="bk_book_cover_bg bk_cover_2">
+            <span class="bk_book_cover_genre">Essays</span>
+            <span class="bk_book_cover_title">Slow<br>Mornings</span>
+            <span class="bk_book_cover_author">R. Okafor</span>
+          </div>
+          <img
+            class="bk_book_cover_img"
+            src="https://covers.openlibrary.org/b/id/10909258-L.jpg"
+            alt="Slow Mornings — book cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_book_cover_spine"></span>
+          <span class="bk_book_cover_shine"></span>
+          <span class="bk_book_cover_price">$19.50</span>
+        </div>
+
+        <div class="bk_book_info">
+          <span class="bk_book_tag">Essays</span>
+          <h3 class="bk_book_title">Slow Mornings</h3>
+          <span class="bk_book_author">by R. Okafor</span>
+        </div>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="book.php?id=3" class="bk_book_card" data-category="fiction">
+        <div class="bk_book_cover">
+          <div class="bk_book_cover_bg bk_cover_3">
+            <span class="bk_book_cover_genre">Poetry</span>
+            <span class="bk_book_cover_title">Paper &amp;<br>Rain</span>
+            <span class="bk_book_cover_author">S. Marlow</span>
+          </div>
+          <img
+            class="bk_book_cover_img"
+            src="https://covers.openlibrary.org/b/id/8231856-L.jpg"
+            alt="Paper & Rain — book cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_book_cover_spine"></span>
+          <span class="bk_book_cover_shine"></span>
+          <span class="bk_book_cover_price">$16.00</span>
+        </div>
+
+        <div class="bk_book_info">
+          <span class="bk_book_tag">Poetry</span>
+          <h3 class="bk_book_title">Paper &amp; Rain</h3>
+          <span class="bk_book_author">by S. Marlow</span>
+        </div>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="book.php?id=4" class="bk_book_card" data-category="nonfiction">
+        <div class="bk_book_cover">
+          <div class="bk_book_cover_bg bk_cover_4">
+            <span class="bk_book_cover_genre">History</span>
+            <span class="bk_book_cover_title">The Long<br>Arch</span>
+            <span class="bk_book_cover_author">A. Deshmukh</span>
+          </div>
+          <img
+            class="bk_book_cover_img"
+            src="https://covers.openlibrary.org/b/id/240727-L.jpg"
+            alt="The Long Arch — book cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_book_cover_spine"></span>
+          <span class="bk_book_cover_shine"></span>
+          <span class="bk_book_cover_price">$28.00</span>
+        </div>
+
+        <div class="bk_book_info">
+          <span class="bk_book_tag">History</span>
+          <h3 class="bk_book_title">The Long Arch</h3>
+          <span class="bk_book_author">by A. Deshmukh</span>
+        </div>
+      </a>
+
+      <!-- Card 5 -->
+      <a href="book.php?id=5" class="bk_book_card" data-category="fantasy">
+        <div class="bk_book_cover">
+          <div class="bk_book_cover_bg bk_cover_5">
+            <span class="bk_book_cover_genre">Fantasy</span>
+            <span class="bk_book_cover_title">The Ninth<br>Gate</span>
+            <span class="bk_book_cover_author">L. Arano</span>
+          </div>
+          <img
+            class="bk_book_cover_img"
+            src="https://covers.openlibrary.org/b/id/8739161-L.jpg"
+            alt="The Ninth Gate — book cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_book_cover_spine"></span>
+          <span class="bk_book_cover_shine"></span>
+          <span class="bk_book_cover_price">$22.00</span>
+        </div>
+
+        <div class="bk_book_info">
+          <span class="bk_book_tag">Fantasy</span>
+          <h3 class="bk_book_title">The Ninth Gate</h3>
+          <span class="bk_book_author">by L. Arano</span>
+        </div>
+      </a>
+
+      <!-- Card 6 -->
+      <a href="book.php?id=6" class="bk_book_card" data-category="business">
+        <div class="bk_book_cover">
+          <div class="bk_book_cover_bg bk_cover_6">
+            <span class="bk_book_cover_genre">Business</span>
+            <span class="bk_book_cover_title">The Long<br>Game</span>
+            <span class="bk_book_cover_author">M. Chen</span>
+          </div>
+          <img
+            class="bk_book_cover_img"
+            src="https://covers.openlibrary.org/b/id/10523383-L.jpg"
+            alt="The Long Game — book cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_book_cover_spine"></span>
+          <span class="bk_book_cover_shine"></span>
+          <span class="bk_book_cover_price">$32.00</span>
+        </div>
+
+        <div class="bk_book_info">
+          <span class="bk_book_tag">Business</span>
+          <h3 class="bk_book_title">The Long Game</h3>
+          <span class="bk_book_author">by M. Chen</span>
+        </div>
+      </a>
+
+      <!-- Card 7 -->
+      <a href="book.php?id=7" class="bk_book_card" data-category="nonfiction">
+        <div class="bk_book_cover">
+          <div class="bk_book_cover_bg bk_cover_7">
+            <span class="bk_book_cover_genre">Memoir</span>
+            <span class="bk_book_cover_title">Letters<br>Home</span>
+            <span class="bk_book_cover_author">N. Farrow</span>
+          </div>
+          <img
+            class="bk_book_cover_img"
+            src="https://covers.openlibrary.org/b/id/11199763-L.jpg"
+            alt="Letters Home — book cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_book_cover_spine"></span>
+          <span class="bk_book_cover_shine"></span>
+          <span class="bk_book_cover_price">$21.00</span>
+        </div>
+
+        <div class="bk_book_info">
+          <span class="bk_book_tag">Memoir</span>
+          <h3 class="bk_book_title">Letters Home</h3>
+          <span class="bk_book_author">by N. Farrow</span>
+        </div>
+      </a>
+
+      <!-- Card 8 -->
+      <a href="book.php?id=8" class="bk_book_card" data-category="fiction">
+        <div class="bk_book_cover">
+          <div class="bk_book_cover_bg bk_cover_8">
+            <span class="bk_book_cover_genre">Fiction</span>
+            <span class="bk_book_cover_title">The Salt<br>Road</span>
+            <span class="bk_book_cover_author">J. Whitmore</span>
+          </div>
+          <img
+            class="bk_book_cover_img"
+            src="https://covers.openlibrary.org/b/id/10521453-L.jpg"
+            alt="The Salt Road — book cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_book_cover_spine"></span>
+          <span class="bk_book_cover_shine"></span>
+          <span class="bk_book_cover_price">Free</span>
+        </div>
+
+        <div class="bk_book_info">
+          <span class="bk_book_tag">Fiction</span>
+          <h3 class="bk_book_title">The Salt Road</h3>
+          <span class="bk_book_author">by J. Whitmore</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Empty state -->
+    <div class="bk_book_empty" id="bk_book_empty" hidden>
+      <i class="fa-solid fa-book-open"></i>
+      <p>No books in this category yet.</p>
+      <span>Try a different filter or browse all books.</span>
+    </div>
+
+  </div>
+</section>
 </main>
 
 <script src="assets/js/main.js"></script>
