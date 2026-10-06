@@ -373,3 +373,85 @@
   });
 
 })();
+
+
+
+
+
+// news later cda 
+(function () {
+  'use strict';
+
+  var container = document.querySelector('.bk_newsletter_container');
+  var form = document.getElementById('bk_newsletter_form');
+
+  if (!container || !form) return;
+
+  var input = form.querySelector('.bk_newsletter_input');
+  var button = form.querySelector('.bk_newsletter_button');
+  var buttonText = button ? button.querySelector('.bk_newsletter_button_text') : null;
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ------------------------------------------------------------
+     Section reveal
+     ------------------------------------------------------------ */
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    container.classList.add('bk_newsletter_visible');
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          container.classList.add('bk_newsletter_visible');
+          revealObserver.unobserve(container);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -60px 0px'
+    });
+    revealObserver.observe(container);
+  }
+
+  /* ------------------------------------------------------------
+     Form submission — client-side validation only
+     (Swap the body for a real endpoint when the backend is ready.)
+     ------------------------------------------------------------ */
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var email = input.value.trim();
+    var validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+
+    form.classList.remove('bk_newsletter_success', 'bk_newsletter_error');
+
+    if (!validEmail) {
+      form.classList.add('bk_newsletter_error');
+      input.focus();
+
+      // reset error after 2.4s
+      setTimeout(function () {
+        form.classList.remove('bk_newsletter_error');
+      }, 2400);
+      return;
+    }
+
+    // Simulate a successful submission
+    var original = buttonText ? buttonText.textContent : '';
+    if (buttonText) buttonText.textContent = 'Thanks — you’re on the list';
+    button.disabled = true;
+    button.style.cursor = 'default';
+    form.classList.add('bk_newsletter_success');
+    input.value = '';
+    input.blur();
+
+    // Restore button after a few seconds
+    setTimeout(function () {
+      if (buttonText) buttonText.textContent = original || 'Join the Reading List';
+      button.disabled = false;
+      button.style.cursor = '';
+      form.classList.remove('bk_newsletter_success');
+    }, 3600);
+  });
+
+})();

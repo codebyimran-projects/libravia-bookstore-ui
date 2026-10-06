@@ -2444,3 +2444,399 @@
     transform: none;
   }
 }
+
+
+/* ============================================================
+   LIBRAVIA — NEWSLETTER CTA SECTION
+   ============================================================ */
+
+.bk_newsletter_section *,
+.bk_newsletter_section *::before,
+.bk_newsletter_section *::after {
+  box-sizing: border-box;
+}
+
+.bk_newsletter_section {
+  position: relative;
+  width: 100%;
+  background: #F9FAF5;
+  padding: clamp(3.5rem, 7vw, 6rem) 2rem;
+  border-top: 1px solid #E5E7EB;
+  overflow: hidden;
+}
+
+.bk_newsletter_container {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #8B5E3C;
+  border-radius: 20px;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.6rem, 5vw, 5rem);
+  overflow: hidden;
+  isolation: isolate;
+
+  /* entry animation */
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bk_newsletter_container.bk_newsletter_visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Subtle warm glow inside the block (very quiet) ---- */
+.bk_newsletter_container::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+              rgba(212, 163, 115, 0.28) 0%,
+              rgba(212, 163, 115, 0.08) 40%,
+              transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Very subtle paper dot texture ---- */
+.bk_newsletter_container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   DECORATIVE ELEMENTS
+   ============================================================ */
+
+.bk_newsletter_decor {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #D4A373;
+  opacity: 0.22;
+  font-size: 1.6rem;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+.bk_newsletter_decor_tl {
+  top: 2rem;
+  left: 2rem;
+}
+
+.bk_newsletter_decor_br {
+  bottom: 2rem;
+  right: 2rem;
+}
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.bk_newsletter_content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.bk_newsletter_title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -1px;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.bk_newsletter_description {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.96rem, 1.35vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+  max-width: 520px;
+}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+
+.bk_newsletter_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+/* Visually hidden label for accessibility */
+.bk_newsletter_label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Form row (input + button) ---- */
+
+.bk_newsletter_row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 540px;
+  background: #FFFFFF;
+  border-radius: 60px;
+  padding: 0.4rem;
+  box-shadow:
+    0 12px 30px rgba(31, 41, 55, 0.12),
+    0 4px 10px rgba(31, 41, 55, 0.06);
+  transition: box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bk_newsletter_row:focus-within {
+  transform: translateY(-1px);
+  box-shadow:
+    0 16px 36px rgba(31, 41, 55, 0.16),
+    0 6px 14px rgba(31, 41, 55, 0.08),
+    0 0 0 3px rgba(212, 163, 115, 0.35);
+}
+
+.bk_newsletter_input {
+  flex: 1;
+  min-width: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.96rem;
+  color: #1F2937;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0.9rem 1.2rem;
+  border-radius: 60px;
+}
+
+.bk_newsletter_input::placeholder {
+  color: #9CA3AF;
+}
+
+.bk_newsletter_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.1px;
+  color: #1F2937;
+  background: #D4A373;
+  border: none;
+  border-radius: 60px;
+  padding: 0.9rem 1.6rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s ease,
+              color 0.3s ease,
+              transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease;
+}
+
+.bk_newsletter_button_icon {
+  font-size: 0.78em;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bk_newsletter_button:hover {
+  background: #c1915f;
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(31, 41, 55, 0.18);
+}
+
+.bk_newsletter_button:hover .bk_newsletter_button_icon {
+  transform: translateX(3px);
+}
+
+.bk_newsletter_button:active {
+  transform: scale(0.99);
+}
+
+/* ---- Note ---- */
+
+.bk_newsletter_note {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0.2rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.bk_newsletter_note::before {
+  content: '\f023';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 0.72em;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   SUBMIT STATES
+   ============================================================ */
+
+.bk_newsletter_form.bk_newsletter_success .bk_newsletter_row {
+  box-shadow:
+    0 12px 30px rgba(31, 41, 55, 0.12),
+    0 0 0 3px rgba(212, 163, 115, 0.45);
+}
+
+.bk_newsletter_form.bk_newsletter_error .bk_newsletter_input {
+  color: #b91c1c;
+}
+
+.bk_newsletter_form.bk_newsletter_error .bk_newsletter_row {
+  box-shadow:
+    0 12px 30px rgba(31, 41, 55, 0.12),
+    0 0 0 3px rgba(239, 68, 68, 0.35);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media screen and (max-width: 780px) {
+  .bk_newsletter_container {
+    border-radius: 18px;
+    padding: 2.6rem 1.8rem;
+  }
+
+  .bk_newsletter_decor {
+    font-size: 1.35rem;
+  }
+
+  .bk_newsletter_decor_tl { top: 1.4rem; left: 1.4rem; }
+  .bk_newsletter_decor_br { bottom: 1.4rem; right: 1.4rem; }
+}
+
+@media screen and (max-width: 560px) {
+  .bk_newsletter_section {
+    padding: 3.5rem 1.2rem;
+  }
+
+  .bk_newsletter_container {
+    padding: 2.4rem 1.4rem 2.2rem;
+    border-radius: 16px;
+  }
+
+  .bk_newsletter_title {
+    letter-spacing: -0.6px;
+  }
+
+  .bk_newsletter_description {
+    font-size: 0.94rem;
+  }
+
+  /* Form row becomes a vertical stack for touch */
+  .bk_newsletter_row {
+    flex-direction: column;
+    padding: 0.4rem;
+    border-radius: 20px;
+    gap: 0.4rem;
+  }
+
+  .bk_newsletter_input {
+    padding: 0.9rem 1rem;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 0.96rem;
+  }
+
+  .bk_newsletter_button {
+    width: 100%;
+    padding: 1rem 1.4rem;
+    border-radius: 16px;
+    font-size: 0.94rem;
+    min-height: 48px;
+  }
+
+  .bk_newsletter_decor {
+    opacity: 0.16;
+  }
+
+  .bk_newsletter_decor_tl { top: 1rem; left: 1rem; }
+  .bk_newsletter_decor_br { bottom: 1rem; right: 1rem; }
+}
+
+@media screen and (max-width: 400px) {
+  .bk_newsletter_container {
+    padding: 2rem 1.1rem 1.9rem;
+  }
+
+  .bk_newsletter_title {
+    font-size: 1.7rem;
+  }
+
+  .bk_newsletter_description {
+    font-size: 0.9rem;
+  }
+
+  .bk_newsletter_note {
+    font-size: 0.76rem;
+  }
+
+  .bk_newsletter_decor {
+    display: none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bk_newsletter_container {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .bk_newsletter_row,
+  .bk_newsletter_button,
+  .bk_newsletter_button_icon {
+    transition: none !important;
+  }
+
+  .bk_newsletter_button:hover {
+    transform: none;
+  }
+}
