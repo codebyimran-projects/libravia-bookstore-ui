@@ -351,3 +351,25 @@
   });
 
 })();
+
+
+// testomonial 
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------
+     Avatar fallback — if the image fails to load, hide it and
+     show the initials behind it (the parent gets a modifier class).
+     ------------------------------------------------------------ */
+  var avatars = document.querySelectorAll('.bk_testimonial_avatar img');
+
+  avatars.forEach(function (img) {
+    img.addEventListener('error', function () {
+      img.style.display = 'none';
+      if (img.parentElement) {
+        img.parentElement.classList.add('bk_avatar_fallback');
+      }
+    });
+  });
+
+})();
