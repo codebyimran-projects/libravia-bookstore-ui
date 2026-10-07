@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Libravia</title>
+  <meta name="description" content="Get in touch with Libravia — questions about orders, recommendations, partnerships, or just to say hello. We reply within one business day.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/contact.css">
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header id="bk_navbar" class="bk_navbar">
+  <div class="bk_navbar_inner">
+
+    <!-- LEFT: Brand -->
+    <a href="index.php" class="bk_brand">
+      <span class="bk_logo">Libravia</span>
+      <span class="bk_tagline">A quiet place to read</span>
+    </a>
+
+    <!-- CENTER: Navigation -->
+    <nav class="bk_nav" id="bk_nav">
+      <a href="index.html" class="bk_nav_item bk_active">Home</a>
+      <a href="books.html" class="bk_nav_item">Books</a>
+      <a href="categories.html" class="bk_nav_item">Categories</a>
+      <a href="about.html" class="bk_nav_item">About</a>
+      <a href="contact.html" class="bk_nav_item">Contact</a>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="bk_actions">
+      <button class="bk_search_icon" aria-label="Search books" id="bk_search_btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <a href="login.html" class="bk_signin">Sign In</a>
+
+      <a href="books.html" class="bk_nav_cta">Explore Books</a>
+
+      <button class="bk_hamburger" id="bk_hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="bk_bar"></span>
+        <span class="bk_bar"></span>
+        <span class="bk_bar"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="bk_mobile_panel" id="bk_mobile_panel">
+    <div class="bk_mobile_inner">
+      <a href="index.html" class="bk_nav_item bk_active">Home</a>
+      <a href="books.html" class="bk_nav_item">Books</a>
+      <a href="categories.html" class="bk_nav_item">Categories</a>
+      <a href="about.html" class="bk_nav_item">About</a>
+      <a href="contact.html" class="bk_nav_item">Contact</a>
+
+      <div class="bk_mobile_actions">
+        <a href="login.html" class="bk_mobile_signin">Sign In</a>
+        <a href="books.html" class="bk_nav_cta bk_mobile_cta">Explore Books</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH PANEL -->
+  <div class="bk_search_panel" id="bk_search_panel">
+    <div class="bk_search_inner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        type="text"
+        class="bk_search_input"
+        placeholder="Search by title, author, or ISBN…"
+        aria-label="Search books"
+      >
+      <button class="bk_search_close" id="bk_search_close" aria-label="Close search">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main role="main">
+
+    <!-- Breadcrumb -->
+    <nav class="bk_breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html" class="bk_breadcrumb_link">Home</a>
+      <span class="bk_breadcrumb_sep" aria-hidden="true">
+        <i class="fa-solid fa-chevron-right"></i>
+      </span>
+      <span class="bk_breadcrumb_current" aria-current="page">Contact</span>
+    </nav>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="bk_contact_hero" aria-label="Contact Libravia">
+
+      <div class="bk_contact_hero_inner">
+
+        <div class="bk_contact_hero_content">
+          <span class="bk_contact_label">Get In Touch</span>
+
+          <h1 class="bk_contact_title">
+            Let's talk books,<br>
+            questions, or<br>
+            anything else.
+          </h1>
+
+          <p class="bk_contact_lead">
+            Whether you're wondering about an order, looking for a
+            recommendation, or interested in working together — we
+            read every message and reply within one business day.
+          </p>
+
+          <div class="bk_contact_hero_meta">
+            <span class="bk_contact_meta_item">
+              <i class="fa-regular fa-clock" aria-hidden="true"></i>
+              <span>Replies within 24 hours</span>
+            </span>
+            <span class="bk_contact_meta_divider" aria-hidden="true"></span>
+            <span class="bk_contact_meta_item">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <span>Remote · Worldwide</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="bk_contact_hero_visual" aria-hidden="true">
+          <div class="bk_contact_hero_badge">
+            <span class="bk_contact_hero_badge_icon">
+              <i class="fa-solid fa-envelope"></i>
+            </span>
+            <div class="bk_contact_hero_badge_meta">
+              <span class="bk_contact_hero_badge_num">1</span>
+              <span class="bk_contact_hero_badge_label">Business day</span>
+            </div>
+          </div>
+
+          <div class="bk_contact_hero_line" aria-hidden="true"></div>
+
+          <div class="bk_contact_hero_quote">
+            <span class="bk_contact_hero_quote_mark">"</span>
+            <p class="bk_contact_hero_quote_text">
+              Every message is read by a person who loves books.
+            </p>
+            <span class="bk_contact_hero_quote_author">— The Libravia Team</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         FORM + INFO
+         ============================================================ -->
+    <section class="bk_contact_main" aria-label="Contact form and details">
+
+      <div class="bk_contact_main_inner">
+
+        <!-- ===== FORM ===== -->
+        <div class="bk_contact_form_wrap">
+
+          <header class="bk_contact_form_header">
+            <h2 class="bk_contact_form_title">Send us a message</h2>
+            <p class="bk_contact_form_subtitle">
+              Fill in the form below. We'll get back to you within one
+              business day — sometimes sooner.
+            </p>
+          </header>
+
+          <form class="bk_contact_form" id="bk_contact_form" novalidate>
+
+            <!-- Row: Name + Email -->
+            <div class="bk_contact_row">
+              <div class="bk_contact_field">
+                <label for="bk_contact_name" class="bk_contact_field_label">
+                  Your name
+                </label>
+                <input
+                  type="text"
+                  id="bk_contact_name"
+                  name="name"
+                  class="bk_contact_input"
+                  placeholder="Jane Doe"
+                  autocomplete="name"
+                  required
+                >
+                <span class="bk_contact_field_error" data-error-for="name"></span>
+              </div>
+
+              <div class="bk_contact_field">
+                <label for="bk_contact_email" class="bk_contact_field_label">
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  id="bk_contact_email"
+                  name="email"
+                  class="bk_contact_input"
+                  placeholder="jane@example.com"
+                  autocomplete="email"
+                  required
+                >
+                <span class="bk_contact_field_error" data-error-for="email"></span>
+              </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="bk_contact_field">
+              <label for="bk_contact_subject" class="bk_contact_field_label">
+                What's this about?
+              </label>
+              <select
+                id="bk_contact_subject"
+                name="subject"
+                class="bk_contact_select"
+                required
+              >
+                <option value="" disabled selected>Choose a topic</option>
+                <option value="order">Order or shipping question</option>
+                <option value="recommendation">Book recommendation</option>
+                <option value="partnership">Partnership</option>
+                <option value="press">Press or media</option>
+                <option value="other">Something else</option>
+              </select>
+              <span class="bk_contact_field_error" data-error-for="subject"></span>
+            </div>
+
+            <!-- Message -->
+            <div class="bk_contact_field">
+              <label for="bk_contact_message" class="bk_contact_field_label">
+                Your message
+              </label>
+              <textarea
+                id="bk_contact_message"
+                name="message"
+                class="bk_contact_textarea"
+                placeholder="Share your question, idea, or just say hello..."
+                rows="6"
+                required
+              ></textarea>
+              <span class="bk_contact_field_error" data-error-for="message"></span>
+            </div>
+
+            <!-- Submit -->
+            <div class="bk_contact_submit_row">
+              <button type="submit" class="bk_contact_submit" id="bk_contact_submit">
+                <span class="bk_contact_submit_text">Send Message</span>
+                <i class="fa-solid fa-arrow-right bk_contact_submit_icon" aria-hidden="true"></i>
+              </button>
+              <p class="bk_contact_submit_note">
+                By sending, you agree to our simple privacy policy.
+              </p>
+            </div>
+
+            <!-- Success -->
+            <div class="bk_contact_success" id="bk_contact_success" hidden>
+              <span class="bk_contact_success_icon" aria-hidden="true">
+                <i class="fa-solid fa-check"></i>
+              </span>
+              <div class="bk_contact_success_meta">
+                <span class="bk_contact_success_title">Message sent.</span>
+                <span class="bk_contact_success_text">
+                  Thanks — we'll reply within one business day.
+                </span>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+
+        <!-- ===== SIDE INFO ===== -->
+        <aside class="bk_contact_side" aria-label="Contact information">
+
+          <div class="bk_contact_side_block">
+            <span class="bk_contact_side_label">Email</span>
+            <a href="mailto:hello@libravia.com" class="bk_contact_side_link">
+              hello@libravia.com
+            </a>
+            <span class="bk_contact_side_note">
+              Best for orders, returns, and detailed questions.
+            </span>
+          </div>
+
+          <div class="bk_contact_side_block">
+            <span class="bk_contact_side_label">Response Time</span>
+            <span class="bk_contact_side_value">Under 24 hours</span>
+            <span class="bk_contact_side_note">
+              Monday to Friday. Weekends occasionally slower.
+            </span>
+          </div>
+
+          <div class="bk_contact_side_block">
+            <span class="bk_contact_side_label">Based In</span>
+            <span class="bk_contact_side_value">Remote · Worldwide</span>
+            <span class="bk_contact_side_note">
+              Working across EU, US, and APAC time zones.
+            </span>
+          </div>
+
+          <div class="bk_contact_side_block">
+            <span class="bk_contact_side_label">Elsewhere</span>
+            <ul class="bk_contact_side_social">
+              <li>
+                <a href="#" class="bk_contact_side_social_link">
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                  <span>Instagram</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="bk_contact_side_social_link">
+                  <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+                  <span>Twitter</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="bk_contact_side_social_link">
+                  <i class="fa-brands fa-pinterest-p" aria-hidden="true"></i>
+                  <span>Pinterest</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="bk_contact_side_social_link">
+                  <i class="fa-brands fa-goodreads-g" aria-hidden="true"></i>
+                  <span>Goodreads</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         FAQ — short, calm
+         ============================================================ -->
+    <section class="bk_contact_faq" aria-label="Common questions">
+
+      <div class="bk_contact_faq_inner">
+
+        <header class="bk_contact_faq_header">
+          <span class="bk_contact_label">Before You Write</span>
+          <h2 class="bk_contact_faq_title">
+            A few answers,<br>
+            in case they help.
+          </h2>
+        </header>
+
+        <div class="bk_contact_faq_grid">
+
+          <article class="bk_contact_faq_item">
+            <h3 class="bk_contact_faq_question">
+              Do you ship internationally?
+            </h3>
+            <p class="bk_contact_faq_answer">
+              Yes — we ship to 38 countries with tracked delivery.
+              Digital orders are available worldwide instantly.
+            </p>
+          </article>
+
+          <article class="bk_contact_faq_item">
+            <h3 class="bk_contact_faq_question">
+              Can you recommend a book?
+            </h3>
+            <p class="bk_contact_faq_answer">
+              Absolutely. Tell us what you last loved and we'll
+              suggest three titles we think you'll connect with.
+            </p>
+          </article>
+
+          <article class="bk_contact_faq_item">
+            <h3 class="bk_contact_faq_question">
+              How do I return an order?
+            </h3>
+            <p class="bk_contact_faq_answer">
+              Email us your order number and we'll send a prepaid
+              return label. Returns are open for 30 days.
+            </p>
+          </article>
+
+          <article class="bk_contact_faq_item">
+            <h3 class="bk_contact_faq_question">
+              Are you open to partnerships?
+            </h3>
+            <p class="bk_contact_faq_answer">
+              Yes — we collaborate with authors, publishers, and
+              independent studios. Send us a short pitch.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="bk_footer" role="contentinfo">
+    <div class="bk_footer_container">
+
+      <div class="bk_footer_grid">
+
+        <div class="bk_footer_brand">
+          <a href="index.html" class="bk_footer_logo">Libravia</a>
+          <span class="bk_footer_tagline">A quiet place to read</span>
+          <p class="bk_footer_about">
+            A premium digital bookstore for readers who value calm,
+            craft, and the feeling of a good page. Books curated with
+            intention — not algorithms.
+          </p>
+          <div class="bk_footer_social">
+            <a href="#" class="bk_footer_social_link" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="bk_footer_social_link" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" class="bk_footer_social_link" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" class="bk_footer_social_link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <nav class="bk_footer_col" aria-label="Browse">
+          <h4 class="bk_footer_col_title">Browse</h4>
+          <ul class="bk_footer_list">
+            <li><a href="books.html" class="bk_footer_link">All Books</a></li>
+            <li><a href="categories.html" class="bk_footer_link">Categories</a></li>
+            <li><a href="bestsellers.html" class="bk_footer_link">Best Sellers</a></li>
+            <li><a href="authors.html" class="bk_footer_link">Authors</a></li>
+          </ul>
+        </nav>
+
+        <nav class="bk_footer_col" aria-label="Categories">
+          <h4 class="bk_footer_col_title">Categories</h4>
+          <ul class="bk_footer_list">
+            <li><a href="books.html?c=fiction" class="bk_footer_link">Fiction</a></li>
+            <li><a href="books.html?c=nonfiction" class="bk_footer_link">Non-Fiction</a></li>
+            <li><a href="books.html?c=business" class="bk_footer_link">Business</a></li>
+            <li><a href="books.html?c=fantasy" class="bk_footer_link">Fantasy</a></li>
+          </ul>
+        </nav>
+
+        <nav class="bk_footer_col" aria-label="Company">
+          <h4 class="bk_footer_col_title">Company</h4>
+          <ul class="bk_footer_list">
+            <li><a href="about.html" class="bk_footer_link">About</a></li>
+            <li><a href="contact.html" class="bk_footer_link">Contact</a></li>
+            <li><a href="careers.html" class="bk_footer_link">Careers</a></li>
+            <li><a href="press.html" class="bk_footer_link">Press</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="bk_footer_bottom">
+        <p class="bk_footer_copyright">© 2025 Libravia. All rights reserved.</p>
+        <div class="bk_footer_legal">
+          <a href="privacy.html" class="bk_footer_legal_link">Privacy</a>
+          <span class="bk_footer_legal_divider" aria-hidden="true">·</span>
+          <a href="terms.html" class="bk_footer_legal_link">Terms</a>
+          <span class="bk_footer_legal_divider" aria-hidden="true">·</span>
+          <a href="cookies.html" class="bk_footer_legal_link">Cookies</a>
+        </div>
+        <p class="bk_footer_credit">Made with care in the quiet hours.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/contact.js"></script>
+
+</body>
+</html>
