@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories — Libravia</title>
+  <meta name="description" content="Browse Libravia books by category — fiction, non-fiction, business, fantasy, history, poetry, and more.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/categories.css">
+</head>
+<body>
+
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header id="bk_navbar" class="bk_navbar">
+  <div class="bk_navbar_inner">
+
+    <!-- LEFT: Brand -->
+    <a href="index.php" class="bk_brand">
+      <span class="bk_logo">Libravia</span>
+      <span class="bk_tagline">A quiet place to read</span>
+    </a>
+
+    <!-- CENTER: Navigation -->
+    <nav class="bk_nav" id="bk_nav">
+      <a href="index.html" class="bk_nav_item bk_active">Home</a>
+      <a href="books.html" class="bk_nav_item">Books</a>
+      <a href="categories.html" class="bk_nav_item">Categories</a>
+      <a href="about.html" class="bk_nav_item">About</a>
+      <a href="contact.html" class="bk_nav_item">Contact</a>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="bk_actions">
+      <button class="bk_search_icon" aria-label="Search books" id="bk_search_btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <a href="login.html" class="bk_signin">Sign In</a>
+
+      <a href="books.html" class="bk_nav_cta">Explore Books</a>
+
+      <button class="bk_hamburger" id="bk_hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="bk_bar"></span>
+        <span class="bk_bar"></span>
+        <span class="bk_bar"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="bk_mobile_panel" id="bk_mobile_panel">
+    <div class="bk_mobile_inner">
+      <a href="index.html" class="bk_nav_item bk_active">Home</a>
+      <a href="books.html" class="bk_nav_item">Books</a>
+      <a href="categories.html" class="bk_nav_item">Categories</a>
+      <a href="about.html" class="bk_nav_item">About</a>
+      <a href="contact.html" class="bk_nav_item">Contact</a>
+
+      <div class="bk_mobile_actions">
+        <a href="login.html" class="bk_mobile_signin">Sign In</a>
+        <a href="books.html" class="bk_nav_cta bk_mobile_cta">Explore Books</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH PANEL -->
+  <div class="bk_search_panel" id="bk_search_panel">
+    <div class="bk_search_inner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        type="text"
+        class="bk_search_input"
+        placeholder="Search by title, author, or ISBN…"
+        aria-label="Search books"
+      >
+      <button class="bk_search_close" id="bk_search_close" aria-label="Close search">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main role="main">
+
+    <!-- Breadcrumb -->
+    <nav class="bk_breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html" class="bk_breadcrumb_link">Home</a>
+      <span class="bk_breadcrumb_sep" aria-hidden="true">
+        <i class="fa-solid fa-chevron-right"></i>
+      </span>
+      <span class="bk_breadcrumb_current" aria-current="page">Categories</span>
+    </nav>
+
+    <!-- Page header -->
+    <div class="bk_cat_header">
+      <div class="bk_cat_header_left">
+        <span class="bk_cat_label">Browse the Library</span>
+        <h1 class="bk_cat_title">Browse by Category</h1>
+        <p class="bk_cat_subtitle">
+          Explore books organized by themes, genres, and moods — every shelf
+          curated with intention, not algorithms.
+        </p>
+      </div>
+      <div class="bk_cat_count">
+        <strong>8</strong> categories · <strong>24</strong> titles
+      </div>
+    </div>
+
+    <!-- ===== FEATURED CATEGORY (large) ===== -->
+    <section class="bk_cat_featured_wrap" aria-label="Featured category">
+
+      <article class="bk_cat_featured">
+        <div class="bk_cat_featured_visual">
+          <div class="bk_cat_featured_bg"></div>
+          <span class="bk_cat_featured_icon" aria-hidden="true">
+            <i class="fa-solid fa-feather"></i>
+          </span>
+        </div>
+
+        <div class="bk_cat_featured_content">
+          <span class="bk_cat_featured_tag">Featured Category</span>
+          <h2 class="bk_cat_featured_title">Fiction</h2>
+          <p class="bk_cat_featured_desc">
+            Stories that linger long after the last page. From literary
+            debuts to quiet thrillers — fiction shaped for slow reading
+            and unforgettable characters.
+          </p>
+
+          <div class="bk_cat_featured_stats">
+            <span class="bk_cat_stat">
+              <strong>8</strong> titles
+            </span>
+            <span class="bk_cat_stat_divider" aria-hidden="true"></span>
+            <span class="bk_cat_stat">
+              <strong>1,240</strong> readers
+            </span>
+            <span class="bk_cat_stat_divider" aria-hidden="true"></span>
+            <span class="bk_cat_stat">
+              <strong>4.8</strong> avg rating
+            </span>
+          </div>
+
+          <a href="books.html?c=fiction" class="bk_cat_featured_btn">
+            <span>Browse Fiction</span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ===== CATEGORY GRID ===== -->
+    <section class="bk_cat_grid_wrap" aria-label="All categories">
+
+      <div class="bk_cat_grid_header">
+        <h2 class="bk_cat_grid_title">All Categories</h2>
+        <div class="bk_cat_grid_sort">
+          <label for="bk_cat_sort" class="bk_cat_grid_sort_label">Sort by</label>
+          <select id="bk_cat_sort" class="bk_cat_grid_sort_select">
+            <option value="popular">Most Popular</option>
+            <option value="az">Title: A → Z</option>
+            <option value="za">Title: Z → A</option>
+            <option value="count">Most Titles</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="bk_cat_grid" id="bk_cat_grid">
+
+        <!-- Fiction -->
+        <a href="books.html?c=fiction" class="bk_cat_card" data-name="fiction" data-count="8" data-popularity="10">
+          <span class="bk_cat_card_icon" aria-hidden="true">
+            <i class="fa-solid fa-feather"></i>
+          </span>
+          <div class="bk_cat_card_content">
+            <h3 class="bk_cat_card_title">Fiction</h3>
+            <p class="bk_cat_card_desc">
+              Stories that linger long after the last page.
+            </p>
+            <span class="bk_cat_card_count">8 titles</span>
+          </div>
+          <span class="bk_cat_card_arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- Non-Fiction -->
+        <a href="books.html?c=nonfiction" class="bk_cat_card" data-name="non-fiction" data-count="6" data-popularity="9">
+          <span class="bk_cat_card_icon" aria-hidden="true">
+            <i class="fa-solid fa-book"></i>
+          </span>
+          <div class="bk_cat_card_content">
+            <h3 class="bk_cat_card_title">Non-Fiction</h3>
+            <p class="bk_cat_card_desc">
+              Ideas, essays, and real-world perspectives.
+            </p>
+            <span class="bk_cat_card_count">6 titles</span>
+          </div>
+          <span class="bk_cat_card_arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- Business -->
+        <a href="books.html?c=business" class="bk_cat_card" data-name="business" data-count="4" data-popularity="8">
+          <span class="bk_cat_card_icon" aria-hidden="true">
+            <i class="fa-solid fa-briefcase"></i>
+          </span>
+          <div class="bk_cat_card_content">
+            <h3 class="bk_cat_card_title">Business</h3>
+            <p class="bk_cat_card_desc">
+              Strategy, leadership, and modern work.
+            </p>
+            <span class="bk_cat_card_count">4 titles</span>
+          </div>
+          <span class="bk_cat_card_arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- Self-Development -->
+        <a href="books.html?c=selfdev" class="bk_cat_card" data-name="self-development" data-count="5" data-popularity="9">
+          <span class="bk_cat_card_icon" aria-hidden="true">
+            <i class="fa-solid fa-seedling"></i>
+          </span>
+          <div class="bk_cat_card_content">
+            <h3 class="bk_cat_card_title">Self-Development</h3>
+            <p class="bk_cat_card_desc">
+              Books for growth, focus, and quiet progress.
+            </p>
+            <span class="bk_cat_card_count">5 titles</span>
+          </div>
+          <span class="bk_cat_card_arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- Fantasy -->
+        <a href="books.html?c=fantasy" class="bk_cat_card" data-name="fantasy" data-count="3" data-popularity="7">
+          <span class="bk_cat_card_icon" aria-hidden="true">
+            <i class="fa-solid fa-wand-sparkles"></i>
+          </span>
+          <div class="bk_cat_card_content">
+            <h3 class="bk_cat_card_title">Fantasy</h3>
+            <p class="bk_cat_card_desc">
+              New worlds, old magic, endless imagination.
+            </p>
+            <span class="bk_cat_card_count">3 titles</span>
+          </div>
+          <span class="bk_cat_card_arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- History -->
+        <a href="books.html?c=history" class="bk_cat_card" data-name="history" data-count="3" data-popularity="6">
+          <span class="bk_cat_card_icon" aria-hidden="true">
+            <i class="fa-solid fa-landmark"></i>
+          </span>
+          <div class="bk_cat_card_content">
+            <h3 class="bk_cat_card_title">History</h3>
+            <p class="bk_cat_card_desc">
+              Understanding the past to read the present.
+            </p>
+            <span class="bk_cat_card_count">3 titles</span>
+          </div>
+          <span class="bk_cat_card_arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- Poetry -->
+        <a href="books.html?c=poetry" class="bk_cat_card" data-name="poetry" data-count="4" data-popularity="8">
+          <span class="bk_cat_card_icon" aria-hidden="true">
+            <i class="fa-solid fa-leaf"></i>
+          </span>
+          <div class="bk_cat_card_content">
+            <h3 class="bk_cat_card_title">Poetry</h3>
+            <p class="bk_cat_card_desc">
+              Language at its most precise and alive.
+            </p>
+            <span class="bk_cat_card_count">4 titles</span>
+          </div>
+          <span class="bk_cat_card_arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+        <!-- Memoir -->
+        <a href="books.html?c=memoir" class="bk_cat_card" data-name="memoir" data-count="3" data-popularity="7">
+          <span class="bk_cat_card_icon" aria-hidden="true">
+            <i class="fa-solid fa-user"></i>
+          </span>
+          <div class="bk_cat_card_content">
+            <h3 class="bk_cat_card_title">Memoir</h3>
+            <p class="bk_cat_card_desc">
+              Lives lived, lessons carried forward.
+            </p>
+            <span class="bk_cat_card_count">3 titles</span>
+          </div>
+          <span class="bk_cat_card_arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+        </a>
+
+      </div>
+
+      <!-- Empty state (rare for this page, but kept consistent) -->
+      <div class="bk_cat_empty" id="bk_cat_empty" hidden>
+        <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+        <p>No categories found.</p>
+        <span>Try a different sort option.</span>
+      </div>
+
+    </section>
+
+    <!-- ===== DISCOVERY CTA (subtle) ===== -->
+    <section class="bk_cat_cta_wrap" aria-label="Discovery">
+      <div class="bk_cat_cta">
+        <div class="bk_cat_cta_content">
+          <span class="bk_cat_cta_label">Not sure where to start?</span>
+          <h2 class="bk_cat_cta_title">Let the shelf guide you.</h2>
+          <p class="bk_cat_cta_text">
+            Browse handpicked collections or read recommendations from
+            readers who found their next favorite book with Libravia.
+          </p>
+          <div class="bk_cat_cta_actions">
+            <a href="books.html" class="bk_cat_cta_btn bk_cat_cta_btn_primary">
+              <span>Browse All Books</span>
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="bestsellers.html" class="bk_cat_cta_btn bk_cat_cta_btn_ghost">
+              <span>See Best Sellers</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="bk_footer" role="contentinfo">
+    <div class="bk_footer_container">
+
+      <div class="bk_footer_grid">
+
+        <div class="bk_footer_brand">
+          <a href="index.html" class="bk_footer_logo">Libravia</a>
+          <span class="bk_footer_tagline">A quiet place to read</span>
+          <p class="bk_footer_about">
+            A premium digital bookstore for readers who value calm,
+            craft, and the feeling of a good page. Books curated with
+            intention — not algorithms.
+          </p>
+          <div class="bk_footer_social">
+            <a href="#" class="bk_footer_social_link" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="bk_footer_social_link" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" class="bk_footer_social_link" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" class="bk_footer_social_link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <nav class="bk_footer_col" aria-label="Browse">
+          <h4 class="bk_footer_col_title">Browse</h4>
+          <ul class="bk_footer_list">
+            <li><a href="books.html" class="bk_footer_link">All Books</a></li>
+            <li><a href="categories.html" class="bk_footer_link">Categories</a></li>
+            <li><a href="bestsellers.html" class="bk_footer_link">Best Sellers</a></li>
+            <li><a href="authors.html" class="bk_footer_link">Authors</a></li>
+          </ul>
+        </nav>
+
+        <nav class="bk_footer_col" aria-label="Categories">
+          <h4 class="bk_footer_col_title">Categories</h4>
+          <ul class="bk_footer_list">
+            <li><a href="books.html?c=fiction" class="bk_footer_link">Fiction</a></li>
+            <li><a href="books.html?c=nonfiction" class="bk_footer_link">Non-Fiction</a></li>
+            <li><a href="books.html?c=business" class="bk_footer_link">Business</a></li>
+            <li><a href="books.html?c=fantasy" class="bk_footer_link">Fantasy</a></li>
+          </ul>
+        </nav>
+
+        <nav class="bk_footer_col" aria-label="Company">
+          <h4 class="bk_footer_col_title">Company</h4>
+          <ul class="bk_footer_list">
+            <li><a href="about.html" class="bk_footer_link">About</a></li>
+            <li><a href="contact.html" class="bk_footer_link">Contact</a></li>
+            <li><a href="careers.html" class="bk_footer_link">Careers</a></li>
+            <li><a href="press.html" class="bk_footer_link">Press</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="bk_footer_bottom">
+        <p class="bk_footer_copyright">© 2025 Libravia. All rights reserved.</p>
+        <div class="bk_footer_legal">
+          <a href="privacy.html" class="bk_footer_legal_link">Privacy</a>
+          <span class="bk_footer_legal_divider" aria-hidden="true">·</span>
+          <a href="terms.html" class="bk_footer_legal_link">Terms</a>
+          <span class="bk_footer_legal_divider" aria-hidden="true">·</span>
+          <a href="cookies.html" class="bk_footer_legal_link">Cookies</a>
+        </div>
+        <p class="bk_footer_credit">Made with care in the quiet hours.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/categories.js"></script>
+
+</body>
+</html>
