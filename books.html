@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Books — Libravia</title>
+  <meta name="description" content="Browse the full Libravia collection — handpicked fiction, non-fiction, business, and fantasy books curated for readers who value calm and craft.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<style>
+/* ============================================================
+   LIBRAVIA — GLOBAL + BOOK SHOP PAGE
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background: #F9FAF5;
+  color: #1F2937;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img { max-width: 100%; display: block; }
+
+:focus-visible {
+  outline: 2px solid #8B5E3C;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+.bk_navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(249, 250, 245, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.bk_navbar_inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.bk_brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+  transition: opacity 0.25s ease;
+}
+.bk_brand:hover { opacity: 0.85; }
+
+.bk_logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: -0.3px;
+  color: #1F2937;
+  line-height: 1;
+}
+
+.bk_tagline {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.68rem;
+  letter-spacing: 0.6px;
+  color: #8B5E3C;
+  opacity: 0.7;
+  line-height: 1;
+}
+
+.bk_nav {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.bk_nav_item {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: #1F2937;
+  position: relative;
+  padding: 0.4rem 0;
+  transition: color 0.3s ease;
+}
+
+.bk_nav_item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #8B5E3C;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bk_nav_item:hover { color: #8B5E3C; }
+.bk_nav_item:hover::after { transform: scaleX(1); }
+
+.bk_nav_item.bk_nav_active { color: #8B5E3C; font-weight: 600; }
+.bk_nav_item.bk_nav_active::after { transform: scaleX(1); }
+
+.bk_actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-shrink: 0;
+}
+
+.bk_search_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #1F2937;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.bk_search_icon:hover {
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.06);
+  border-color: rgba(139, 94, 60, 0.15);
+}
+
+.bk_signin {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #1F2937;
+  padding: 0.5rem 0.2rem;
+  transition: color 0.3s ease;
+}
+.bk_signin:hover { color: #8B5E3C; }
+
+.bk_cart_btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #1F2937;
+  font-size: 1rem;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.bk_cart_btn:hover {
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.06);
+}
+
+.bk_cart_count {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 20px;
+  background: #8B5E3C;
+  color: #F9FAF5;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.66rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.bk_nav_cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #F9FAF5;
+  background: #8B5E3C;
+  border: 1px solid #8B5E3C;
+  border-radius: 8px;
+  padding: 0.65rem 1.3rem;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+}
+
+.bk_nav_cta:hover {
+  background: #D4A373;
+  border-color: #D4A373;
+  color: #1F2937;
+  transform: scale(1.02);
+  box-shadow: 0 4px 14px rgba(212, 163, 115, 0.25);
+}
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+
+.bk_breadcrumb {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 6.5rem 2rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #6B7280;
+  flex-wrap: wrap;
+}
+
+.bk_breadcrumb_link {
+  color: #6B7280;
+  transition: color 0.3s ease;
+}
+
+.bk_breadcrumb_link:hover { color: #8B5E3C; }
+
+.bk_breadcrumb_sep {
+  color: #D1D5DB;
+  font-size: 0.7rem;
+}
+
+.bk_breadcrumb_current {
+  color: #1F2937;
+  font-weight: 500;
+}
+
+/* ============================================================
+   PAGE HEADER
+   ============================================================ */
+
+.bk_shop_header {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 1rem 2rem 2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.bk_shop_header_left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 640px;
+}
+
+.bk_shop_label {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: #8B5E3C;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(139, 94, 60, 0.25);
+}
+
+.bk_shop_title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  color: #1F2937;
+  margin: 0;
+}
+
+.bk_shop_subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.94rem, 1.3vw, 1.02rem);
+  line-height: 1.65;
+  color: #6B7280;
+  margin: 0;
+}
+
+.bk_shop_count {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.86rem;
+  color: #6B7280;
+  flex-shrink: 0;
+}
+
+.bk_shop_count strong {
+  color: #1F2937;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SHOP LAYOUT — SIDEBAR + GRID
+   ============================================================ */
+
+.bk_shop_layout {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.bk_shop_sidebar {
+  position: sticky;
+  top: 92px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.bk_sidebar_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.bk_sidebar_block:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.bk_sidebar_title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 0.94rem;
+  color: #1F2937;
+  padding-bottom: 0.7rem;
+  position: relative;
+}
+
+.bk_sidebar_title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 22px;
+  height: 1.5px;
+  background: #8B5E3C;
+  opacity: 0.8;
+}
+
+.bk_sidebar_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bk_sidebar_filter {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: #4b5563;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.bk_sidebar_filter:hover {
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.06);
+}
+
+.bk_sidebar_filter.bk_filter_active {
+  color: #8B5E3C;
+  font-weight: 600;
+  background: rgba(139, 94, 60, 0.08);
+}
+
+.bk_filter_check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid #D1D5DB;
+  background: #FFFFFF;
+  flex-shrink: 0;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  font-size: 0.6rem;
+  color: #F9FAF5;
+}
+
+.bk_sidebar_filter.bk_filter_active .bk_filter_check {
+  background: #8B5E3C;
+  border-color: #8B5E3C;
+}
+
+.bk_sidebar_filter.bk_filter_active .bk_filter_check::after {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+}
+
+.bk_filter_label {
+  flex: 1;
+}
+
+.bk_filter_count {
+  font-size: 0.78rem;
+  color: #9CA3AF;
+  font-weight: 400;
+}
+
+.bk_sidebar_filter.bk_filter_active .bk_filter_count {
+  color: #8B5E3C;
+}
+
+/* Price range */
+.bk_price_range {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.bk_price_inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bk_price_input {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.84rem;
+  color: #1F2937;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+  outline: none;
+  transition: border-color 0.25s ease;
+  min-width: 0;
+}
+
+.bk_price_input:focus {
+  border-color: #8B5E3C;
+}
+
+.bk_price_input::placeholder {
+  color: #9CA3AF;
+}
+
+.bk_price_sep {
+  color: #9CA3AF;
+  font-size: 0.82rem;
+}
+
+/* Rating filter */
+.bk_rating_filter {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86rem;
+  color: #4b5563;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.bk_rating_filter:hover {
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.06);
+}
+
+.bk_rating_filter .bk_rating_stars_small {
+  display: inline-flex;
+  gap: 2px;
+  color: #D4A373;
+  font-size: 0.68rem;
+}
+
+/* ============================================================
+   MAIN CONTENT — TOOLBAR + GRID
+   ============================================================ */
+
+.bk_shop_main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* Toolbar */
+.bk_shop_toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.bk_shop_toolbar_left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bk_shop_toolbar_label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86rem;
+  color: #6B7280;
+}
+
+.bk_shop_active_filters {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.bk_active_filter_chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.78rem;
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.08);
+  border: 1px solid rgba(139, 94, 60, 0.18);
+  padding: 0.3rem 0.7rem;
+  border-radius: 40px;
+}
+
+.bk_active_filter_chip button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  font-size: 0.6rem;
+  color: #8B5E3C;
+  border-radius: 50%;
+  background: rgba(139, 94, 60, 0.15);
+  transition: background 0.25s ease;
+}
+
+.bk_active_filter_chip button:hover {
+  background: rgba(139, 94, 60, 0.3);
+}
+
+/* Sort */
+.bk_shop_sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.bk_shop_sort_label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86rem;
+  color: #6B7280;
+}
+
+.bk_shop_sort_select {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.86rem;
+  color: #1F2937;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 0.55rem 2rem 0.55rem 0.85rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238B5E3C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 12px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  outline: none;
+}
+
+.bk_shop_sort_select:focus {
+  border-color: #8B5E3C;
+  box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.2);
+}
+
+.bk_shop_mobile_filter_btn {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.86rem;
+  color: #1F2937;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.bk_shop_mobile_filter_btn:hover {
+  color: #8B5E3C;
+  border-color: #8B5E3C;
+}
+
+/* ============================================================
+   BOOK GRID
+   ============================================================ */
+
+.bk_shop_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+
+/* Book card — same as Featured Books */
+.bk_shop_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease,
+              box-shadow 0.4s ease;
+}
+
+.bk_shop_card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 94, 60, 0.25);
+  box-shadow:
+    0 14px 30px rgba(31, 41, 55, 0.08),
+    0 4px 10px rgba(31, 41, 55, 0.04);
+}
+
+/* Cover */
+.bk_shop_cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #EFEAE0;
+}
+
+.bk_shop_cover_bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bk_shop_card:hover .bk_shop_cover_bg {
+  transform: scale(1.03);
+}
+
+.bk_shop_cover_1 { background: linear-gradient(155deg, #4a3120 0%, #8B5E3C 45%, #6b4528 100%); }
+.bk_shop_cover_2 { background: linear-gradient(155deg, #25353f 0%, #3f5867 50%, #2a3a44 100%); }
+.bk_shop_cover_3 { background: linear-gradient(155deg, #8B5E3C 0%, #D4A373 55%, #b98a5a 100%); }
+.bk_shop_cover_4 { background: linear-gradient(155deg, #2a2a26 0%, #57544a 55%, #3d3b33 100%); }
+.bk_shop_cover_5 { background: linear-gradient(155deg, #3a1e2e 0%, #6b3352 55%, #4a2238 100%); }
+.bk_shop_cover_6 { background: linear-gradient(155deg, #1f3a2e 0%, #366e54 55%, #264a38 100%); }
+.bk_shop_cover_7 { background: linear-gradient(155deg, #4a3d2a 0%, #8a7550 55%, #5e5038 100%); }
+.bk_shop_cover_8 { background: linear-gradient(155deg, #2d2d3a 0%, #4a4a5e 55%, #353544 100%); }
+.bk_shop_cover_9 { background: linear-gradient(155deg, #3a2a1a 0%, #7a4a2a 55%, #4a2e1a 100%); }
+
+.bk_shop_cover_img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 1;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bk_shop_card:hover .bk_shop_cover_img {
+  transform: scale(1.04);
+}
+
+/* Paper texture */
+.bk_shop_cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 6px 6px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+}
+
+.bk_shop_cover_spine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 10px;
+  background: linear-gradient(to right,
+              rgba(0, 0, 0, 0.28) 0%,
+              rgba(0, 0, 0, 0.1) 40%,
+              rgba(0, 0, 0, 0.03) 75%,
+              rgba(0, 0, 0, 0) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Badge */
+.bk_shop_badge {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.62rem;
+  letter-spacing: 0.3px;
+  color: #8B5E3C;
+  background: rgba(212, 163, 115, 0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.28rem 0.65rem;
+  border-radius: 40px;
+  border: 1px solid rgba(212, 163, 115, 0.4);
+}
+
+/* Wishlist on card */
+.bk_shop_wishlist {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(249, 250, 245, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #6B7280;
+  font-size: 0.82rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  opacity: 0;
+}
+
+.bk_shop_card:hover .bk_shop_wishlist {
+  opacity: 1;
+}
+
+.bk_shop_wishlist:hover {
+  color: #8B5E3C;
+  background: #FFFFFF;
+  transform: scale(1.08);
+}
+
+.bk_shop_wishlist.bk_active {
+  color: #8B5E3C;
+  background: #FFFFFF;
+  opacity: 1;
+}
+
+.bk_shop_wishlist.bk_active i {
+  font-weight: 900;
+}
+
+/* Info */
+.bk_shop_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.1rem 1.2rem 1.3rem;
+}
+
+.bk_shop_category {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.62rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.08);
+  padding: 0.28rem 0.65rem;
+  border-radius: 40px;
+}
+
+.bk_shop_name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+  color: #1F2937;
+  margin: 0.15rem 0 0;
+  transition: color 0.3s ease;
+}
+
+.bk_shop_card:hover .bk_shop_name {
+  color: #8B5E3C;
+}
+
+.bk_shop_author {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: #6B7280;
+}
+
+/* Rating + price row */
+.bk_shop_meta_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #F1F0EA;
+}
+
+.bk_shop_rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: #1F2937;
+  font-weight: 500;
+}
+
+.bk_shop_rating i {
+  color: #D4A373;
+  font-size: 0.72rem;
+}
+
+.bk_shop_price {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.94rem;
+  color: #1F2937;
+}
+
+.bk_shop_price.bk_price_free {
+  color: #16a34a;
+}
+
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+
+.bk_pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 3rem;
+  padding-top: 2.4rem;
+  border-top: 1px solid #E5E7EB;
+  flex-wrap: wrap;
+}
+
+.bk_page_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 0.6rem;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.86rem;
+  color: #4b5563;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.bk_page_btn:hover:not(:disabled) {
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.06);
+  border-color: rgba(139, 94, 60, 0.15);
+}
+
+.bk_page_btn.bk_page_active {
+  color: #F9FAF5;
+  background: #8B5E3C;
+  border-color: #8B5E3C;
+  font-weight: 600;
+}
+
+.bk_page_btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.bk_page_ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 40px;
+  color: #9CA3AF;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86rem;
+  user-select: none;
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.bk_shop_empty {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  padding: 5rem 1.5rem;
+  border: 1px dashed #E5E7EB;
+  border-radius: 14px;
+}
+
+.bk_shop_empty.bk_visible {
+  display: flex;
+}
+
+.bk_shop_empty i {
+  font-size: 2rem;
+  color: #8B5E3C;
+  opacity: 0.5;
+  margin-bottom: 0.4rem;
+}
+
+.bk_shop_empty p {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #1F2937;
+  margin: 0;
+}
+
+.bk_shop_empty span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: #9CA3AF;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.bk_footer {
+  position: relative;
+  width: 100%;
+  background: #F9FAF5;
+  border-top: 1px solid #E5E7EB;
+  padding: 3.5rem 2rem 1.8rem;
+}
+
+.bk_footer_container {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.bk_footer_grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.bk_footer_brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 380px;
+}
+
+.bk_footer_logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: #1F2937;
+  transition: opacity 0.3s ease;
+}
+.bk_footer_logo:hover { opacity: 0.75; }
+
+.bk_footer_tagline {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8B5E3C;
+  opacity: 0.8;
+  margin: -0.4rem 0 0.4rem;
+}
+
+.bk_footer_about {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #6B7280;
+  max-width: 340px;
+}
+
+.bk_footer_social {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.bk_footer_social_link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  color: #6B7280;
+  font-size: 0.92rem;
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.bk_footer_social_link:hover {
+  color: #F9FAF5;
+  background: #8B5E3C;
+  border-color: #8B5E3C;
+  transform: translateY(-2px);
+}
+
+.bk_footer_col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.bk_footer_col_title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #1F2937;
+  padding-bottom: 0.7rem;
+  position: relative;
+}
+
+.bk_footer_col_title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 22px;
+  height: 1.5px;
+  background: #8B5E3C;
+  opacity: 0.8;
+}
+
+.bk_footer_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.bk_footer_link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: #4b5563;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.bk_footer_link:hover {
+  color: #8B5E3C;
+  transform: translateX(3px);
+}
+
+.bk_footer_bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1.8rem;
+}
+
+.bk_footer_copyright,
+.bk_footer_credit {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: #6B7280;
+}
+
+.bk_footer_credit {
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  color: #9CA3AF;
+  font-size: 0.78rem;
+}
+
+.bk_footer_legal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.bk_footer_legal_link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #6B7280;
+  transition: color 0.3s ease;
+}
+.bk_footer_legal_link:hover { color: #8B5E3C; }
+
+.bk_footer_legal_divider {
+  color: #D1D5DB;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   MOBILE FILTER DRAWER
+   ============================================================ */
+
+.bk_mobile_filter_overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 41, 55, 0.5);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.bk_mobile_filter_overlay.bk_open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+.bk_mobile_filter_drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(340px, 88vw);
+  height: 100dvh;
+  background: #F9FAF5;
+  z-index: 2001;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto;
+  padding: 1.6rem 1.6rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.bk_mobile_filter_drawer.bk_open {
+  transform: translateX(0);
+}
+
+.bk_mobile_filter_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.bk_mobile_filter_head_title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #1F2937;
+  margin: 0;
+}
+
+.bk_mobile_filter_close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #4b5563;
+  font-size: 1rem;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.bk_mobile_filter_close:hover {
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.08);
+}
+
+.bk_mobile_filter_drawer .bk_sidebar_block {
+  padding-bottom: 1.6rem;
+}
+
+.bk_mobile_filter_apply {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.94rem;
+  color: #F9FAF5;
+  background: #8B5E3C;
+  border: 1px solid #8B5E3C;
+  border-radius: 10px;
+  padding: 0.95rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.bk_mobile_filter_apply:hover {
+  background: #D4A373;
+  border-color: #D4A373;
+  color: #1F2937;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media screen and (max-width: 1100px) {
+  .bk_shop_layout {
+    grid-template-columns: 240px 1fr;
+    gap: 2.4rem;
+  }
+
+  .bk_shop_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .bk_shop_layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .bk_shop_sidebar {
+    display: none;
+  }
+
+  .bk_shop_mobile_filter_btn {
+    display: inline-flex;
+  }
+
+  .bk_footer_grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem 2rem;
+  }
+
+  .bk_footer_brand {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .bk_navbar_inner {
+    padding: 0 1.4rem;
+    height: 64px;
+    gap: 1rem;
+  }
+
+  .bk_logo { font-size: 1.4rem; }
+  .bk_tagline { font-size: 0.62rem; }
+  .bk_nav { display: none; }
+  .bk_signin { display: none; }
+  .bk_nav_cta { display: none; }
+
+  .bk_breadcrumb {
+    padding: 5.5rem 1.4rem 0.9rem;
+    font-size: 0.78rem;
+  }
+
+  .bk_shop_header {
+    padding: 1rem 1.4rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .bk_shop_layout {
+    padding: 0 1.4rem 3.5rem;
+  }
+
+  .bk_shop_grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .bk_shop_cover {
+    aspect-ratio: 4 / 5;
+  }
+
+  .bk_shop_toolbar {
+    gap: 0.8rem;
+  }
+
+  .bk_shop_toolbar_left {
+    width: 100%;
+    order: 2;
+  }
+
+  .bk_shop_sort {
+    flex: 1;
+    justify-content: flex-start;
+  }
+
+  .bk_shop_sort_select {
+    flex: 1;
+  }
+
+  .bk_shop_mobile_filter_btn {
+    order: 1;
+  }
+
+  .bk_shop_card:hover {
+    transform: none;
+  }
+
+  .bk_shop_card:hover .bk_shop_cover_img,
+  .bk_shop_card:hover .bk_shop_cover_bg {
+    transform: none;
+  }
+
+  /* Always show wishlist on mobile */
+  .bk_shop_wishlist {
+    opacity: 1;
+  }
+
+  .bk_pagination {
+    gap: 0.3rem;
+    margin-top: 2.4rem;
+    padding-top: 2rem;
+  }
+
+  .bk_page_btn {
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.82rem;
+  }
+
+  .bk_footer {
+    padding: 2.6rem 1.4rem 1.6rem;
+  }
+
+  .bk_footer_grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .bk_footer_bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bk_shop_card,
+  .bk_shop_cover_bg,
+  .bk_shop_cover_img,
+  .bk_shop_name,
+  .bk_shop_wishlist,
+  .bk_mobile_filter_drawer,
+  .bk_mobile_filter_overlay {
+    transition: none !important;
+  }
+
+  .bk_shop_card:hover {
+    transform: none;
+  }
+
+  .bk_shop_card:hover .bk_shop_cover_img,
+  .bk_shop_card:hover .bk_shop_cover_bg {
+    transform: none;
+  }
+}
+</style>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header class="bk_navbar">
+  <div class="bk_navbar_inner">
+    <a href="index.html" class="bk_brand">
+      <span class="bk_logo">Libravia</span>
+      <span class="bk_tagline">A quiet place to read</span>
+    </a>
+
+    <nav class="bk_nav">
+      <a href="index.html" class="bk_nav_item">Home</a>
+      <a href="books.html" class="bk_nav_item bk_nav_active">Books</a>
+      <a href="categories.html" class="bk_nav_item">Categories</a>
+      <a href="about.html" class="bk_nav_item">About</a>
+      <a href="contact.html" class="bk_nav_item">Contact</a>
+    </nav>
+
+    <div class="bk_actions">
+      <button class="bk_search_icon" aria-label="Search books">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <a href="login.html" class="bk_signin">Sign In</a>
+      <button class="bk_cart_btn" aria-label="Shopping cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="bk_cart_count">2</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     BREADCRUMB
+     ============================================================ -->
+<div class="bk_breadcrumb">
+  <a href="index.html" class="bk_breadcrumb_link">Home</a>
+  <span class="bk_breadcrumb_sep"><i class="fa-solid fa-chevron-right"></i></span>
+  <span class="bk_breadcrumb_current">All Books</span>
+</div>
+
+<!-- ============================================================
+     PAGE HEADER
+     ============================================================ -->
+<div class="bk_shop_header">
+  <div class="bk_shop_header_left">
+    <span class="bk_shop_label">Full Collection</span>
+    <h1 class="bk_shop_title">All Books</h1>
+    <p class="bk_shop_subtitle">
+      Browse every title in the Libravia collection — handpicked, curated, and organized for calm discovery.
+    </p>
+  </div>
+  <div class="bk_shop_count">
+    <strong id="bk_shop_visible_count">9</strong> of <strong>24</strong> titles
+  </div>
+</div>
+
+<!-- ============================================================
+     SHOP LAYOUT
+     ============================================================ -->
+<div class="bk_shop_layout">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="bk_shop_sidebar" id="bk_sidebar">
+
+    <!-- Category -->
+    <div class="bk_sidebar_block">
+      <h3 class="bk_sidebar_title">Category</h3>
+      <ul class="bk_sidebar_list">
+        <li>
+          <button class="bk_sidebar_filter bk_filter_active" data-filter="category" data-value="all">
+            <span class="bk_filter_check"></span>
+            <span class="bk_filter_label">All Categories</span>
+            <span class="bk_filter_count">24</span>
+          </button>
+        </li>
+        <li>
+          <button class="bk_sidebar_filter" data-filter="category" data-value="fiction">
+            <span class="bk_filter_check"></span>
+            <span class="bk_filter_label">Fiction</span>
+            <span class="bk_filter_count">8</span>
+          </button>
+        </li>
+        <li>
+          <button class="bk_sidebar_filter" data-filter="category" data-value="nonfiction">
+            <span class="bk_filter_check"></span>
+            <span class="bk_filter_label">Non-Fiction</span>
+            <span class="bk_filter_count">6</span>
+          </button>
+        </li>
+        <li>
+          <button class="bk_sidebar_filter" data-filter="category" data-value="business">
+            <span class="bk_filter_check"></span>
+            <span class="bk_filter_label">Business</span>
+            <span class="bk_filter_count">4</span>
+          </button>
+        </li>
+        <li>
+          <button class="bk_sidebar_filter" data-filter="category" data-value="fantasy">
+            <span class="bk_filter_check"></span>
+            <span class="bk_filter_label">Fantasy</span>
+            <span class="bk_filter_count">3</span>
+          </button>
+        </li>
+        <li>
+          <button class="bk_sidebar_filter" data-filter="category" data-value="history">
+            <span class="bk_filter_check"></span>
+            <span class="bk_filter_label">History</span>
+            <span class="bk_filter_count">3</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Price -->
+    <div class="bk_sidebar_block">
+      <h3 class="bk_sidebar_title">Price</h3>
+      <div class="bk_price_range">
+        <div class="bk_price_inputs">
+          <input type="number" class="bk_price_input" placeholder="$0" aria-label="Minimum price" id="bk_price_min">
+          <span class="bk_price_sep">–</span>
+          <input type="number" class="bk_price_input" placeholder="$50" aria-label="Maximum price" id="bk_price_max">
+        </div>
+      </div>
+    </div>
+
+    <!-- Rating -->
+    <div class="bk_sidebar_block">
+      <h3 class="bk_sidebar_title">Rating</h3>
+      <ul class="bk_sidebar_list">
+        <li>
+          <button class="bk_rating_filter" data-rating="5">
+            <span class="bk_rating_stars_small">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </span>
+            <span>5 stars</span>
+          </button>
+        </li>
+        <li>
+          <button class="bk_rating_filter" data-rating="4">
+            <span class="bk_rating_stars_small">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </span>
+            <span>4 stars &amp; up</span>
+          </button>
+        </li>
+        <li>
+          <button class="bk_rating_filter" data-rating="3">
+            <span class="bk_rating_stars_small">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </span>
+            <span>3 stars &amp; up</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Format -->
+    <div class="bk_sidebar_block">
+      <h3 class="bk_sidebar_title">Format</h3>
+      <ul class="bk_sidebar_list">
+        <li>
+          <button class="bk_sidebar_filter" data-filter="format" data-value="hardcover">
+            <span class="bk_filter_check"></span>
+            <span class="bk_filter_label">Hardcover</span>
+            <span class="bk_filter_count">12</span>
+          </button>
+        </li>
+        <li>
+          <button class="bk_sidebar_filter" data-filter="format" data-value="paperback">
+            <span class="bk_filter_check"></span>
+            <span class="bk_filter_label">Paperback</span>
+            <span class="bk_filter_count">9</span>
+          </button>
+        </li>
+        <li>
+          <button class="bk_sidebar_filter" data-filter="format" data-value="ebook">
+            <span class="bk_filter_check"></span>
+            <span class="bk_filter_label">eBook</span>
+            <span class="bk_filter_count">3</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="bk_shop_main">
+
+    <!-- Toolbar -->
+    <div class="bk_shop_toolbar">
+
+      <button class="bk_shop_mobile_filter_btn" id="bk_open_filters">
+        <i class="fa-solid fa-sliders"></i>
+        <span>Filters</span>
+      </button>
+
+      <div class="bk_shop_toolbar_left">
+        <span class="bk_shop_toolbar_label" id="bk_toolbar_label">Showing 9 of 24 titles</span>
+
+        <div class="bk_shop_active_filters" id="bk_active_filters">
+          <!-- Populated by JS when filters are applied -->
+        </div>
+      </div>
+
+      <div class="bk_shop_sort">
+        <label for="bk_sort" class="bk_shop_sort_label">Sort by</label>
+        <select id="bk_sort" class="bk_shop_sort_select">
+          <option value="popular">Most Popular</option>
+          <option value="newest">Newest Arrivals</option>
+          <option value="rating">Highest Rated</option>
+          <option value="price_low">Price: Low to High</option>
+          <option value="price_high">Price: High to Low</option>
+          <option value="title">Title: A → Z</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Grid -->
+    <div class="bk_shop_grid" id="bk_shop_grid">
+
+      <!-- 1 -->
+      <a href="book.html?id=1" class="bk_shop_card" data-category="fiction" data-rating="4.9" data-price="24" data-format="hardcover">
+        <div class="bk_shop_cover">
+          <div class="bk_shop_cover_bg bk_shop_cover_1"></div>
+          <img class="bk_shop_cover_img" src="https://covers.openlibrary.org/b/id/10521443-L.jpg" alt="The Quiet Hour" loading="lazy" onerror="this.style.display='none';">
+          <span class="bk_shop_badge"><i class="fa-solid fa-crown"></i> #1</span>
+          <button class="bk_shop_wishlist" aria-label="Add to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          <span class="bk_shop_cover_spine"></span>
+        </div>
+        <div class="bk_shop_info">
+          <span class="bk_shop_category">Fiction</span>
+          <h3 class="bk_shop_name">The Quiet Hour</h3>
+          <span class="bk_shop_author">by E. M. Hale</span>
+          <div class="bk_shop_meta_row">
+            <span class="bk_shop_rating"><i class="fa-solid fa-star"></i> 4.9</span>
+            <span class="bk_shop_price">$24.00</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 2 -->
+      <a href="book.html?id=2" class="bk_shop_card" data-category="nonfiction" data-rating="4.8" data-price="19.5" data-format="paperback">
+        <div class="bk_shop_cover">
+          <div class="bk_shop_cover_bg bk_shop_cover_2"></div>
+          <img class="bk_shop_cover_img" src="https://covers.openlibrary.org/b/id/10909258-L.jpg" alt="Slow Mornings" loading="lazy" onerror="this.style.display='none';">
+          <span class="bk_shop_badge"><i class="fa-solid fa-arrow-trend-up"></i> Trending</span>
+          <button class="bk_shop_wishlist" aria-label="Add to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          <span class="bk_shop_cover_spine"></span>
+        </div>
+        <div class="bk_shop_info">
+          <span class="bk_shop_category">Essays</span>
+          <h3 class="bk_shop_name">Slow Mornings</h3>
+          <span class="bk_shop_author">by R. Okafor</span>
+          <div class="bk_shop_meta_row">
+            <span class="bk_shop_rating"><i class="fa-solid fa-star"></i> 4.8</span>
+            <span class="bk_shop_price">$19.50</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 3 -->
+      <a href="book.html?id=3" class="bk_shop_card" data-category="fiction" data-rating="4.7" data-price="16" data-format="paperback">
+        <div class="bk_shop_cover">
+          <div class="bk_shop_cover_bg bk_shop_cover_3"></div>
+          <img class="bk_shop_cover_img" src="https://covers.openlibrary.org/b/id/8231856-L.jpg" alt="Paper & Rain" loading="lazy" onerror="this.style.display='none';">
+          <button class="bk_shop_wishlist" aria-label="Add to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          <span class="bk_shop_cover_spine"></span>
+        </div>
+        <div class="bk_shop_info">
+          <span class="bk_shop_category">Poetry</span>
+          <h3 class="bk_shop_name">Paper &amp; Rain</h3>
+          <span class="bk_shop_author">by S. Marlow</span>
+          <div class="bk_shop_meta_row">
+            <span class="bk_shop_rating"><i class="fa-solid fa-star"></i> 4.7</span>
+            <span class="bk_shop_price">$16.00</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 4 -->
+      <a href="book.html?id=4" class="bk_shop_card" data-category="history" data-rating="4.6" data-price="28" data-format="hardcover">
+        <div class="bk_shop_cover">
+          <div class="bk_shop_cover_bg bk_shop_cover_4"></div>
+          <img class="bk_shop_cover_img" src="https://covers.openlibrary.org/b/id/240727-L.jpg" alt="The Long Arch" loading="lazy" onerror="this.style.display='none';">
+          <button class="bk_shop_wishlist" aria-label="Add to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          <span class="bk_shop_cover_spine"></span>
+        </div>
+        <div class="bk_shop_info">
+          <span class="bk_shop_category">History</span>
+          <h3 class="bk_shop_name">The Long Arch</h3>
+          <span class="bk_shop_author">by A. Deshmukh</span>
+          <div class="bk_shop_meta_row">
+            <span class="bk_shop_rating"><i class="fa-solid fa-star"></i> 4.6</span>
+            <span class="bk_shop_price">$28.00</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 5 -->
+      <a href="book.html?id=5" class="bk_shop_card" data-category="fantasy" data-rating="4.7" data-price="22" data-format="hardcover">
+        <div class="bk_shop_cover">
+          <div class="bk_shop_cover_bg bk_shop_cover_5"></div>
+          <img class="bk_shop_cover_img" src="https://covers.openlibrary.org/b/id/8739161-L.jpg" alt="The Ninth Gate" loading="lazy" onerror="this.style.display='none';">
+          <span class="bk_shop_badge"><i class="fa-solid fa-star"></i> New</span>
+          <button class="bk_shop_wishlist" aria-label="Add to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          <span class="bk_shop_cover_spine"></span>
+        </div>
+        <div class="bk_shop_info">
+          <span class="bk_shop_category">Fantasy</span>
+          <h3 class="bk_shop_name">The Ninth Gate</h3>
+          <span class="bk_shop_author">by L. Arano</span>
+          <div class="bk_shop_meta_row">
+            <span class="bk_shop_rating"><i class="fa-solid fa-star"></i> 4.7</span>
+            <span class="bk_shop_price">$22.00</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 6 -->
+      <a href="book.html?id=6" class="bk_shop_card" data-category="business" data-rating="4.8" data-price="32" data-format="hardcover">
+        <div class="bk_shop_cover">
+          <div class="bk_shop_cover_bg bk_shop_cover_6"></div>
+          <img class="bk_shop_cover_img" src="https://covers.openlibrary.org/b/id/10523383-L.jpg" alt="The Long Game" loading="lazy" onerror="this.style.display='none';">
+          <span class="bk_shop_badge"><i class="fa-solid fa-crown"></i> #2</span>
+          <button class="bk_shop_wishlist" aria-label="Add to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          <span class="bk_shop_cover_spine"></span>
+        </div>
+        <div class="bk_shop_info">
+          <span class="bk_shop_category">Business</span>
+          <h3 class="bk_shop_name">The Long Game</h3>
+          <span class="bk_shop_author">by M. Chen</span>
+          <div class="bk_shop_meta_row">
+            <span class="bk_shop_rating"><i class="fa-solid fa-star"></i> 4.8</span>
+            <span class="bk_shop_price">$32.00</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 7 -->
+      <a href="book.html?id=7" class="bk_shop_card" data-category="nonfiction" data-rating="4.8" data-price="21" data-format="paperback">
+        <div class="bk_shop_cover">
+          <div class="bk_shop_cover_bg bk_shop_cover_7"></div>
+          <img class="bk_shop_cover_img" src="https://covers.openlibrary.org/b/id/11199763-L.jpg" alt="Letters Home" loading="lazy" onerror="this.style.display='none';">
+          <button class="bk_shop_wishlist" aria-label="Add to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          <span class="bk_shop_cover_spine"></span>
+        </div>
+        <div class="bk_shop_info">
+          <span class="bk_shop_category">Memoir</span>
+          <h3 class="bk_shop_name">Letters Home</h3>
+          <span class="bk_shop_author">by N. Farrow</span>
+          <div class="bk_shop_meta_row">
+            <span class="bk_shop_rating"><i class="fa-solid fa-star"></i> 4.8</span>
+            <span class="bk_shop_price">$21.00</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 8 -->
+      <a href="book.html?id=8" class="bk_shop_card" data-category="fiction" data-rating="4.9" data-price="0" data-format="ebook">
+        <div class="bk_shop_cover">
+          <div class="bk_shop_cover_bg bk_shop_cover_8"></div>
+          <img class="bk_shop_cover_img" src="https://covers.openlibrary.org/b/id/10521453-L.jpg" alt="The Salt Road" loading="lazy" onerror="this.style.display='none';">
+          <span class="bk_shop_badge"><i class="fa-solid fa-gift"></i> Free</span>
+          <button class="bk_shop_wishlist" aria-label="Add to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          <span class="bk_shop_cover_spine"></span>
+        </div>
+        <div class="bk_shop_info">
+          <span class="bk_shop_category">Fiction</span>
+          <h3 class="bk_shop_name">The Salt Road</h3>
+          <span class="bk_shop_author">by J. Whitmore</span>
+          <div class="bk_shop_meta_row">
+            <span class="bk_shop_rating"><i class="fa-solid fa-star"></i> 4.9</span>
+            <span class="bk_shop_price bk_price_free">Free</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 9 -->
+      <a href="book.html?id=9" class="bk_shop_card" data-category="business" data-rating="4.5" data-price="26" data-format="hardcover">
+        <div class="bk_shop_cover">
+          <div class="bk_shop_cover_bg bk_shop_cover_9"></div>
+          <img class="bk_shop_cover_img" src="https://covers.openlibrary.org/b/id/10523446-L.jpg" alt="Quiet Ambition" loading="lazy" onerror="this.style.display='none';">
+          <button class="bk_shop_wishlist" aria-label="Add to wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          <span class="bk_shop_cover_spine"></span>
+        </div>
+        <div class="bk_shop_info">
+          <span class="bk_shop_category">Business</span>
+          <h3 class="bk_shop_name">Quiet Ambition</h3>
+          <span class="bk_shop_author">by P. Nwosu</span>
+          <div class="bk_shop_meta_row">
+            <span class="bk_shop_rating"><i class="fa-solid fa-star"></i> 4.5</span>
+            <span class="bk_shop_price">$26.00</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Empty state -->
+    <div class="bk_shop_empty" id="bk_shop_empty">
+      <i class="fa-solid fa-folder-open"></i>
+      <p>No books match your filters.</p>
+      <span>Try adjusting your filters or clearing them.</span>
+    </div>
+
+    <!-- Pagination -->
+    <nav class="bk_pagination" aria-label="Pagination">
+      <button class="bk_page_btn" aria-label="Previous page" disabled>
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="bk_page_btn bk_page_active">1</button>
+      <button class="bk_page_btn">2</button>
+      <button class="bk_page_btn">3</button>
+      <span class="bk_page_ellipsis">…</span>
+      <button class="bk_page_btn">6</button>
+      <button class="bk_page_btn" aria-label="Next page">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </nav>
+
+  </main>
+
+</div>
+
+<!-- ============================================================
+     MOBILE FILTER DRAWER
+     ============================================================ -->
+<div class="bk_mobile_filter_overlay" id="bk_mobile_filter_overlay"></div>
+
+<aside class="bk_mobile_filter_drawer" id="bk_mobile_filter_drawer" aria-hidden="true">
+
+  <div class="bk_mobile_filter_head">
+    <h2 class="bk_mobile_filter_head_title">Filters</h2>
+    <button class="bk_mobile_filter_close" id="bk_mobile_filter_close" aria-label="Close filters">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <!-- Category -->
+  <div class="bk_sidebar_block">
+    <h3 class="bk_sidebar_title">Category</h3>
+    <ul class="bk_sidebar_list">
+      <li>
+        <button class="bk_sidebar_filter bk_filter_active" data-filter="category" data-value="all">
+          <span class="bk_filter_check"></span>
+          <span class="bk_filter_label">All Categories</span>
+          <span class="bk_filter_count">24</span>
+        </button>
+      </li>
+      <li>
+        <button class="bk_sidebar_filter" data-filter="category" data-value="fiction">
+          <span class="bk_filter_check"></span>
+          <span class="bk_filter_label">Fiction</span>
+          <span class="bk_filter_count">8</span>
+        </button>
+      </li>
+      <li>
+        <button class="bk_sidebar_filter" data-filter="category" data-value="nonfiction">
+          <span class="bk_filter_check"></span>
+          <span class="bk_filter_label">Non-Fiction</span>
+          <span class="bk_filter_count">6</span>
+        </button>
+      </li>
+      <li>
+        <button class="bk_sidebar_filter" data-filter="category" data-value="business">
+          <span class="bk_filter_check"></span>
+          <span class="bk_filter_label">Business</span>
+          <span class="bk_filter_count">4</span>
+        </button>
+      </li>
+      <li>
+        <button class="bk_sidebar_filter" data-filter="category" data-value="fantasy">
+          <span class="bk_filter_check"></span>
+          <span class="bk_filter_label">Fantasy</span>
+          <span class="bk_filter_count">3</span>
+        </button>
+      </li>
+      <li>
+        <button class="bk_sidebar_filter" data-filter="category" data-value="history">
+          <span class="bk_filter_check"></span>
+          <span class="bk_filter_label">History</span>
+          <span class="bk_filter_count">3</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Price -->
+  <div class="bk_sidebar_block">
+    <h3 class="bk_sidebar_title">Price</h3>
+    <div class="bk_price_range">
+      <div class="bk_price_inputs">
+        <input type="number" class="bk_price_input" placeholder="$0" aria-label="Minimum price">
+        <span class="bk_price_sep">–</span>
+        <input type="number" class="bk_price_input" placeholder="$50" aria-label="Maximum price">
+      </div>
+    </div>
+  </div>
+
+  <!-- Rating -->
+  <div class="bk_sidebar_block">
+    <h3 class="bk_sidebar_title">Rating</h3>
+    <ul class="bk_sidebar_list">
+      <li>
+        <button class="bk_rating_filter" data-rating="5">
+          <span class="bk_rating_stars_small">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </span>
+          <span>5 stars</span>
+        </button>
+      </li>
+      <li>
+        <button class="bk_rating_filter" data-rating="4">
+          <span class="bk_rating_stars_small">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </span>
+          <span>4 stars &amp; up</span>
+        </button>
+      </li>
+      <li>
+        <button class="bk_rating_filter" data-rating="3">
+          <span class="bk_rating_stars_small">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </span>
+          <span>3 stars &amp; up</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <button class="bk_mobile_filter_apply" id="bk_mobile_filter_apply">
+    <span>Apply Filters</span>
+    <i class="fa-solid fa-arrow-right"></i>
+  </button>
+
+</aside>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="bk_footer">
+  <div class="bk_footer_container">
+
+    <div class="bk_footer_grid">
+
+      <div class="bk_footer_brand">
+        <a href="index.html" class="bk_footer_logo">Libravia</a>
+        <span class="bk_footer_tagline">A quiet place to read</span>
+        <p class="bk_footer_about">
+          A premium digital bookstore for readers who value calm,
+          craft, and the feeling of a good page. Books curated with
+          intention — not algorithms.
+        </p>
+        <div class="bk_footer_social">
+          <a href="#" class="bk_footer_social_link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="bk_footer_social_link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="bk_footer_social_link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="bk_footer_social_link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+        </div>
+      </div>
+
+      <nav class="bk_footer_col">
+        <h4 class="bk_footer_col_title">Browse</h4>
+        <ul class="bk_footer_list">
+          <li><a href="books.html" class="bk_footer_link">All Books</a></li>
+          <li><a href="categories.html" class="bk_footer_link">Categories</a></li>
+          <li><a href="bestsellers.html" class="bk_footer_link">Best Sellers</a></li>
+          <li><a href="authors.html" class="bk_footer_link">Authors</a></li>
+        </ul>
+      </nav>
+
+      <nav class="bk_footer_col">
+        <h4 class="bk_footer_col_title">Categories</h4>
+        <ul class="bk_footer_list">
+          <li><a href="books.html?c=fiction" class="bk_footer_link">Fiction</a></li>
+          <li><a href="books.html?c=nonfiction" class="bk_footer_link">Non-Fiction</a></li>
+          <li><a href="books.html?c=business" class="bk_footer_link">Business</a></li>
+          <li><a href="books.html?c=fantasy" class="bk_footer_link">Fantasy</a></li>
+        </ul>
+      </nav>
+
+      <nav class="bk_footer_col">
+        <h4 class="bk_footer_col_title">Company</h4>
+        <ul class="bk_footer_list">
+          <li><a href="about.html" class="bk_footer_link">About</a></li>
+          <li><a href="contact.html" class="bk_footer_link">Contact</a></li>
+          <li><a href="careers.html" class="bk_footer_link">Careers</a></li>
+          <li><a href="press.html" class="bk_footer_link">Press</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="bk_footer_bottom">
+      <p class="bk_footer_copyright">© 2025 Libravia. All rights reserved.</p>
+      <div class="bk_footer_legal">
+        <a href="privacy.html" class="bk_footer_legal_link">Privacy</a>
+        <span class="bk_footer_legal_divider">·</span>
+        <a href="terms.html" class="bk_footer_legal_link">Terms</a>
+        <span class="bk_footer_legal_divider">·</span>
+        <a href="cookies.html" class="bk_footer_legal_link">Cookies</a>
+      </div>
+      <p class="bk_footer_credit">Made with care in the quiet hours.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+
+</script>
+
+</body>
+</html>

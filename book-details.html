@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Quiet Hour — Libravia</title>
+  <meta name="description" content="The Quiet Hour by E. M. Hale — a luminous debut novel about four lives across a single day in a small coastal town.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<style>
+/* ============================================================
+   LIBRAVIA — GLOBAL + BOOK DETAIL PAGE
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background: #F9FAF5;
+  color: #1F2937;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid #8B5E3C;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+.bk_navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(249, 250, 245, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #E5E7EB;
+  box-shadow: 0 1px 2px rgba(31, 41, 55, 0.03);
+}
+
+.bk_navbar_inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.bk_brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+  transition: opacity 0.25s ease;
+}
+.bk_brand:hover { opacity: 0.85; }
+
+.bk_logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: -0.3px;
+  color: #1F2937;
+  line-height: 1;
+}
+
+.bk_tagline {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.68rem;
+  letter-spacing: 0.6px;
+  color: #8B5E3C;
+  opacity: 0.7;
+  line-height: 1;
+}
+
+.bk_nav {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.bk_nav_item {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: #1F2937;
+  position: relative;
+  padding: 0.4rem 0;
+  transition: color 0.3s ease;
+}
+
+.bk_nav_item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #8B5E3C;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bk_nav_item:hover { color: #8B5E3C; }
+.bk_nav_item:hover::after { transform: scaleX(1); }
+
+.bk_actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-shrink: 0;
+}
+
+.bk_search_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #1F2937;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.bk_search_icon:hover {
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.06);
+  border-color: rgba(139, 94, 60, 0.15);
+}
+
+.bk_signin {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #1F2937;
+  padding: 0.5rem 0.2rem;
+  transition: color 0.3s ease;
+}
+.bk_signin:hover { color: #8B5E3C; }
+
+.bk_nav_cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #F9FAF5;
+  background: #8B5E3C;
+  border: 1px solid #8B5E3C;
+  border-radius: 8px;
+  padding: 0.65rem 1.3rem;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+}
+
+.bk_nav_cta:hover {
+  background: #D4A373;
+  border-color: #D4A373;
+  color: #1F2937;
+  transform: scale(1.02);
+  box-shadow: 0 4px 14px rgba(212, 163, 115, 0.25);
+}
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+
+.bk_breadcrumb {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 6.5rem 2rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #6B7280;
+  flex-wrap: wrap;
+}
+
+.bk_breadcrumb_link {
+  color: #6B7280;
+  transition: color 0.3s ease;
+}
+
+.bk_breadcrumb_link:hover {
+  color: #8B5E3C;
+}
+
+.bk_breadcrumb_sep {
+  color: #D1D5DB;
+  font-size: 0.7rem;
+}
+
+.bk_breadcrumb_current {
+  color: #1F2937;
+  font-weight: 500;
+}
+
+/* ============================================================
+   BOOK DETAIL — MAIN LAYOUT
+   ============================================================ */
+
+.bk_book_detail {
+  width: 100%;
+  padding: 2rem 2rem 4rem;
+}
+
+.bk_book_detail_container {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+/* ============================================================
+   LEFT — BOOK COVER
+   ============================================================ */
+
+.bk_book_detail_cover_wrap {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.bk_book_detail_cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4.2;
+  border-radius: 6px 16px 16px 6px;
+  overflow: hidden;
+  background: #EFEAE0;
+  box-shadow:
+    0 30px 60px rgba(31, 41, 55, 0.15),
+    0 10px 24px rgba(31, 41, 55, 0.08),
+    0 0 0 1px rgba(31, 41, 55, 0.06);
+}
+
+.bk_book_detail_cover_bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, #4a3120 0%, #8B5E3C 45%, #6b4528 100%);
+}
+
+.bk_book_detail_cover_img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 1;
+}
+
+/* Spine overlay */
+.bk_book_detail_cover_spine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 14px;
+  background: linear-gradient(to right,
+              rgba(0, 0, 0, 0.35) 0%,
+              rgba(0, 0, 0, 0.12) 40%,
+              rgba(0, 0, 0, 0.03) 75%,
+              rgba(0, 0, 0, 0) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.bk_book_detail_cover_spine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================
+   ACTION ROW UNDER COVER
+   ============================================================ */
+
+.bk_book_detail_actions {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.bk_book_btn_primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.94rem;
+  color: #F9FAF5;
+  background: #8B5E3C;
+  border: 1px solid #8B5E3C;
+  border-radius: 10px;
+  padding: 0.95rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+}
+
+.bk_book_btn_primary i {
+  font-size: 0.85em;
+}
+
+.bk_book_btn_primary:hover {
+  background: #D4A373;
+  border-color: #D4A373;
+  color: #1F2937;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(212, 163, 115, 0.3);
+}
+
+.bk_book_btn_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1.5px solid #E5E7EB;
+  color: #4b5563;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease, transform 0.25s ease;
+}
+
+.bk_book_btn_icon:hover {
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.06);
+  border-color: #8B5E3C;
+  transform: translateY(-2px);
+}
+
+.bk_book_btn_icon.bk_wishlist_active {
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.1);
+  border-color: #8B5E3C;
+}
+
+/* ============================================================
+   RIGHT — BOOK INFO
+   ============================================================ */
+
+.bk_book_detail_info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  max-width: 720px;
+}
+
+.bk_book_detail_category {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.08);
+  padding: 0.35rem 0.85rem;
+  border-radius: 40px;
+}
+
+.bk_book_detail_title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  color: #1F2937;
+  margin: 0;
+}
+
+.bk_book_detail_author {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: #6B7280;
+  margin: 0;
+}
+
+.bk_book_detail_author a {
+  color: #8B5E3C;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.bk_book_detail_author a:hover {
+  border-bottom-color: #8B5E3C;
+}
+
+/* ---------- Rating row ---------- */
+
+.bk_book_detail_rating_row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.bk_book_detail_stars {
+  display: inline-flex;
+  gap: 3px;
+  color: #D4A373;
+  font-size: 0.88rem;
+}
+
+.bk_book_detail_rating_num {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1F2937;
+}
+
+.bk_book_detail_rating_count {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.86rem;
+  color: #9CA3AF;
+}
+
+/* ---------- Price ---------- */
+
+.bk_book_detail_price_row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.bk_book_detail_price {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: -0.8px;
+  color: #1F2937;
+}
+
+.bk_book_detail_price_note {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: #6B7280;
+}
+
+/* ---------- Description ---------- */
+
+.bk_book_detail_desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #4b5563;
+}
+
+.bk_book_detail_desc p {
+  margin: 0 0 1rem;
+}
+
+.bk_book_detail_desc p:last-child {
+  margin-bottom: 0;
+}
+
+.bk_book_detail_desc em {
+  font-style: italic;
+  color: #1F2937;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em;
+}
+
+/* ---------- Meta grid ---------- */
+
+.bk_book_detail_meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 2rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid #E5E7EB;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.bk_book_meta_item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bk_book_meta_label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #9CA3AF;
+}
+
+.bk_book_meta_value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.94rem;
+  color: #1F2937;
+}
+
+/* ============================================================
+   TABS
+   ============================================================ */
+
+.bk_book_tabs {
+  width: 100%;
+  padding: 4rem 2rem;
+  background: #F9FAF5;
+  border-top: 1px solid #E5E7EB;
+}
+
+.bk_book_tabs_container {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.bk_book_tabs_nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.4rem;
+  border-bottom: 1px solid #E5E7EB;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.bk_book_tabs_nav::-webkit-scrollbar {
+  display: none;
+}
+
+.bk_book_tab_btn {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #6B7280;
+  padding: 0.9rem 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.bk_book_tab_btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: #8B5E3C;
+  border-radius: 2px 2px 0 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bk_book_tab_btn:hover {
+  color: #8B5E3C;
+}
+
+.bk_book_tab_btn.bk_tab_active {
+  color: #1F2937;
+  font-weight: 600;
+}
+
+.bk_book_tab_btn.bk_tab_active::after {
+  transform: scaleX(1);
+}
+
+/* Panels */
+.bk_book_tab_panel {
+  display: none;
+  max-width: 820px;
+}
+
+.bk_book_tab_panel.bk_tab_visible {
+  display: block;
+  animation: bk_fade_in 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes bk_fade_in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Description panel */
+.bk_book_panel_text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.bk_book_panel_text p {
+  margin: 0 0 1.2rem;
+}
+
+.bk_book_panel_text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Details panel */
+.bk_book_panel_details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem 2rem;
+}
+
+/* Reviews panel */
+.bk_book_panel_reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.bk_review_card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  padding: 1.6rem 1.5rem 1.4rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bk_review_card:hover {
+  transform: translateY(-3px);
+  border-color: #D4A373;
+  box-shadow: 0 12px 26px rgba(31, 41, 55, 0.06);
+}
+
+.bk_review_head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.bk_review_avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(155deg, #8B5E3C 0%, #D4A373 100%);
+}
+
+.bk_review_avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bk_review_meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.bk_review_name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #1F2937;
+}
+
+.bk_review_role {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.76rem;
+  color: #9CA3AF;
+}
+
+.bk_review_date {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.76rem;
+  color: #9CA3AF;
+  margin-left: auto;
+}
+
+.bk_review_stars {
+  display: inline-flex;
+  gap: 2px;
+  color: #D4A373;
+  font-size: 0.72rem;
+  margin-bottom: 0.6rem;
+}
+
+.bk_review_text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* ============================================================
+   RELATED BOOKS
+   ============================================================ */
+
+.bk_related {
+  width: 100%;
+  padding: 4rem 2rem 5rem;
+  background: #F9FAF5;
+  border-top: 1px solid #E5E7EB;
+}
+
+.bk_related_container {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.bk_related_header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.4rem;
+  flex-wrap: wrap;
+}
+
+.bk_related_label {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: #8B5E3C;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(139, 94, 60, 0.25);
+  margin-bottom: 0.6rem;
+}
+
+.bk_related_title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.7px;
+  color: #1F2937;
+  margin: 0;
+}
+
+.bk_related_viewall {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #8B5E3C;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.bk_related_viewall i {
+  font-size: 0.78em;
+  transition: transform 0.3s ease;
+}
+
+.bk_related_viewall:hover {
+  color: #D4A373;
+  gap: 0.8rem;
+}
+
+.bk_related_viewall:hover i {
+  transform: translateX(3px);
+}
+
+.bk_related_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+}
+
+.bk_related_card {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease,
+              box-shadow 0.4s ease;
+}
+
+.bk_related_card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 94, 60, 0.25);
+  box-shadow:
+    0 14px 30px rgba(31, 41, 55, 0.08),
+    0 4px 10px rgba(31, 41, 55, 0.04);
+}
+
+.bk_related_cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #EFEAE0;
+}
+
+.bk_related_cover_bg {
+  position: absolute;
+  inset: 0;
+}
+
+.bk_related_cover_1 { background: linear-gradient(155deg, #25353f 0%, #3f5867 50%, #2a3a44 100%); }
+.bk_related_cover_2 { background: linear-gradient(155deg, #8B5E3C 0%, #D4A373 55%, #b98a5a 100%); }
+.bk_related_cover_3 { background: linear-gradient(155deg, #2a2a26 0%, #57544a 55%, #3d3b33 100%); }
+.bk_related_cover_4 { background: linear-gradient(155deg, #3a1e2e 0%, #6b3352 55%, #4a2238 100%); }
+
+.bk_related_cover_img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bk_related_card:hover .bk_related_cover_img {
+  transform: scale(1.04);
+}
+
+.bk_related_cover_spine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 10px;
+  background: linear-gradient(to right,
+              rgba(0, 0, 0, 0.28) 0%,
+              rgba(0, 0, 0, 0.1) 40%,
+              rgba(0, 0, 0, 0.03) 75%,
+              rgba(0, 0, 0, 0) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.bk_related_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.2rem 1.3rem;
+}
+
+.bk_related_tag {
+  display: inline-flex;
+  align-self: flex-start;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.6rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #8B5E3C;
+  background: rgba(139, 94, 60, 0.08);
+  padding: 0.25rem 0.6rem;
+  border-radius: 40px;
+}
+
+.bk_related_name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+  color: #1F2937;
+  margin: 0.15rem 0 0;
+  transition: color 0.3s ease;
+}
+
+.bk_related_card:hover .bk_related_name {
+  color: #8B5E3C;
+}
+
+.bk_related_author {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: #6B7280;
+}
+
+.bk_related_price {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #1F2937;
+  margin-top: 0.35rem;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.bk_footer {
+  position: relative;
+  width: 100%;
+  background: #F9FAF5;
+  border-top: 1px solid #E5E7EB;
+  padding: 3.5rem 2rem 1.8rem;
+}
+
+.bk_footer_container {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.bk_footer_grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.bk_footer_brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  max-width: 380px;
+}
+
+.bk_footer_logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: #1F2937;
+  transition: opacity 0.3s ease;
+}
+.bk_footer_logo:hover { opacity: 0.75; }
+
+.bk_footer_tagline {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8B5E3C;
+  opacity: 0.8;
+  margin: -0.4rem 0 0.4rem;
+}
+
+.bk_footer_about {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #6B7280;
+  max-width: 340px;
+}
+
+.bk_footer_social {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.bk_footer_social_link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  color: #6B7280;
+  font-size: 0.92rem;
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.bk_footer_social_link:hover {
+  color: #F9FAF5;
+  background: #8B5E3C;
+  border-color: #8B5E3C;
+  transform: translateY(-2px);
+}
+
+.bk_footer_col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.bk_footer_col_title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #1F2937;
+  padding-bottom: 0.7rem;
+  position: relative;
+}
+
+.bk_footer_col_title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 22px;
+  height: 1.5px;
+  background: #8B5E3C;
+  opacity: 0.8;
+}
+
+.bk_footer_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.bk_footer_link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: #4b5563;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.bk_footer_link:hover {
+  color: #8B5E3C;
+  transform: translateX(3px);
+}
+
+.bk_footer_bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1.8rem;
+}
+
+.bk_footer_copyright,
+.bk_footer_credit {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: #6B7280;
+}
+
+.bk_footer_credit {
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  color: #9CA3AF;
+  font-size: 0.78rem;
+}
+
+.bk_footer_legal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.bk_footer_legal_link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #6B7280;
+  transition: color 0.3s ease;
+}
+
+.bk_footer_legal_link:hover { color: #8B5E3C; }
+
+.bk_footer_legal_divider {
+  color: #D1D5DB;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media screen and (max-width: 1080px) {
+  .bk_book_detail_container {
+    grid-template-columns: 320px 1fr;
+    gap: 3rem;
+  }
+
+  .bk_related_grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .bk_footer_grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem 2rem;
+  }
+
+  .bk_footer_brand {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .bk_breadcrumb {
+    padding: 6rem 1.5rem 1rem;
+  }
+
+  .bk_book_detail {
+    padding: 1.5rem 1.5rem 3rem;
+  }
+
+  .bk_book_detail_container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .bk_book_detail_cover_wrap {
+    position: static;
+    max-width: 380px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .bk_book_detail_info {
+    max-width: 100%;
+  }
+
+  .bk_book_detail_meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bk_book_tabs {
+    padding: 3rem 1.5rem;
+  }
+
+  .bk_book_panel_details {
+    grid-template-columns: 1fr;
+  }
+
+  .bk_related {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .bk_related_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .bk_navbar_inner {
+    padding: 0 1.4rem;
+    height: 64px;
+    gap: 1rem;
+  }
+
+  .bk_logo { font-size: 1.4rem; }
+  .bk_tagline { font-size: 0.62rem; }
+  .bk_nav { display: none; }
+  .bk_signin { display: none; }
+  .bk_nav_cta { display: none; }
+
+  .bk_breadcrumb {
+    padding: 5.5rem 1.2rem 0.9rem;
+    font-size: 0.78rem;
+  }
+
+  .bk_book_detail {
+    padding: 1.2rem 1.2rem 2.4rem;
+  }
+
+  .bk_book_detail_cover_wrap {
+    max-width: 100%;
+  }
+
+  .bk_book_detail_actions {
+    grid-template-columns: 1fr auto auto;
+    gap: 0.5rem;
+  }
+
+  .bk_book_btn_primary {
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .bk_book_btn_icon {
+    width: 44px;
+  }
+
+  .bk_book_detail_title {
+    letter-spacing: -0.8px;
+  }
+
+  .bk_book_detail_price {
+    font-size: 1.7rem;
+  }
+
+  .bk_book_detail_meta {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem 1.2rem;
+    padding: 1.1rem 0;
+  }
+
+  .bk_book_tabs {
+    padding: 2.4rem 1.2rem;
+  }
+
+  .bk_book_tabs_nav {
+    gap: 1.4rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .bk_book_tab_btn {
+    font-size: 0.88rem;
+  }
+
+  .bk_review_card {
+    padding: 1.3rem 1.2rem 1.1rem;
+  }
+
+  .bk_related {
+    padding: 2.5rem 1.2rem 3rem;
+  }
+
+  .bk_related_grid {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .bk_related_card:hover {
+    transform: none;
+  }
+
+  .bk_related_card:hover .bk_related_cover_img {
+    transform: none;
+  }
+
+  .bk_footer {
+    padding: 2.6rem 1.2rem 1.4rem;
+  }
+
+  .bk_footer_grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .bk_footer_bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bk_book_tab_panel.bk_tab_visible {
+    animation: none;
+  }
+
+  .bk_book_btn_primary:hover,
+  .bk_book_btn_icon:hover,
+  .bk_review_card:hover,
+  .bk_related_card:hover {
+    transform: none;
+  }
+
+  .bk_related_card:hover .bk_related_cover_img {
+    transform: none;
+  }
+}
+</style>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header class="bk_navbar">
+  <div class="bk_navbar_inner">
+    <a href="index.html" class="bk_brand">
+      <span class="bk_logo">Libravia</span>
+      <span class="bk_tagline">A quiet place to read</span>
+    </a>
+
+    <nav class="bk_nav">
+      <a href="index.html" class="bk_nav_item">Home</a>
+      <a href="books.html" class="bk_nav_item">Books</a>
+      <a href="categories.html" class="bk_nav_item">Categories</a>
+      <a href="about.html" class="bk_nav_item">About</a>
+      <a href="contact.html" class="bk_nav_item">Contact</a>
+    </nav>
+
+    <div class="bk_actions">
+      <button class="bk_search_icon" aria-label="Search books">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <a href="login.html" class="bk_signin">Sign In</a>
+      <a href="books.html" class="bk_nav_cta">Explore Books</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     BREADCRUMB
+     ============================================================ -->
+<div class="bk_breadcrumb">
+  <a href="index.html" class="bk_breadcrumb_link">Home</a>
+  <span class="bk_breadcrumb_sep"><i class="fa-solid fa-chevron-right"></i></span>
+  <a href="books.html" class="bk_breadcrumb_link">Books</a>
+  <span class="bk_breadcrumb_sep"><i class="fa-solid fa-chevron-right"></i></span>
+  <a href="categories.html?c=fiction" class="bk_breadcrumb_link">Fiction</a>
+  <span class="bk_breadcrumb_sep"><i class="fa-solid fa-chevron-right"></i></span>
+  <span class="bk_breadcrumb_current">The Quiet Hour</span>
+</div>
+
+<!-- ============================================================
+     BOOK DETAIL
+     ============================================================ -->
+<section class="bk_book_detail">
+  <div class="bk_book_detail_container">
+
+    <!-- LEFT: COVER -->
+    <div class="bk_book_detail_cover_wrap">
+      <div class="bk_book_detail_cover">
+        <div class="bk_book_detail_cover_bg"></div>
+        <img
+          class="bk_book_detail_cover_img"
+          src="https://covers.openlibrary.org/b/id/10521443-L.jpg"
+          alt="The Quiet Hour book cover"
+          loading="eager"
+          decoding="async"
+          onerror="this.style.display='none';"
+        >
+        <span class="bk_book_detail_cover_spine"></span>
+      </div>
+
+      <div class="bk_book_detail_actions">
+        <button class="bk_book_btn_primary" id="bk_read_sample">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Read Sample</span>
+        </button>
+        <button class="bk_book_btn_icon" id="bk_wishlist" aria-label="Add to wishlist">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="bk_book_btn_icon" id="bk_share" aria-label="Share">
+          <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT: INFO -->
+    <div class="bk_book_detail_info">
+
+      <span class="bk_book_detail_category">Fiction</span>
+
+      <h1 class="bk_book_detail_title">The Quiet Hour</h1>
+
+      <p class="bk_book_detail_author">
+        by <a href="author.html?id=1">E. M. Hale</a>
+      </p>
+
+      <!-- Rating -->
+      <div class="bk_book_detail_rating_row">
+        <span class="bk_book_detail_stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </span>
+        <span class="bk_book_detail_rating_num">4.9</span>
+        <span class="bk_book_detail_rating_count">· 1,240 reviews</span>
+      </div>
+
+      <!-- Price -->
+      <div class="bk_book_detail_price_row">
+        <span class="bk_book_detail_price">$24.00</span>
+        <span class="bk_book_detail_price_note">Hardcover · Free shipping over $30</span>
+      </div>
+
+      <!-- Description -->
+      <div class="bk_book_detail_desc">
+        <p>
+          In the blue hour before dawn, a small coastal town wakes to
+          news that will reshape everything its residents believed
+          about each other. E. M. Hale's luminous debut follows four
+          lives across a single day — a lighthouse keeper, a returning
+          soldier, a young mother, and a stranger who arrives on the
+          last ferry.
+        </p>
+        <p>
+          Told in prose that feels both spare and deeply felt,
+          <em>The Quiet Hour</em> is a meditation on the small
+          decisions that shape a life, and the silences we keep even
+          from those we love most.
+        </p>
+      </div>
+
+      <!-- Meta -->
+      <div class="bk_book_detail_meta">
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Pages</span>
+          <span class="bk_book_meta_value">348</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Language</span>
+          <span class="bk_book_meta_value">English</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Publisher</span>
+          <span class="bk_book_meta_value">Libravia Press</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Published</span>
+          <span class="bk_book_meta_value">March 2024</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Format</span>
+          <span class="bk_book_meta_value">Hardcover</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">ISBN</span>
+          <span class="bk_book_meta_value">978-1-2345-6789-0</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     TABS
+     ============================================================ -->
+<section class="bk_book_tabs">
+  <div class="bk_book_tabs_container">
+
+    <div class="bk_book_tabs_nav" role="tablist">
+      <button class="bk_book_tab_btn bk_tab_active" data-tab="description" role="tab">Description</button>
+      <button class="bk_book_tab_btn" data-tab="details" role="tab">Details</button>
+      <button class="bk_book_tab_btn" data-tab="reviews" role="tab">Reviews (3)</button>
+    </div>
+
+    <!-- Panel: Description -->
+    <div class="bk_book_tab_panel bk_tab_visible" data-panel="description">
+      <div class="bk_book_panel_text">
+        <p>
+          <strong>From the publisher:</strong>
+        </p>
+        <p>
+          In the blue hour before dawn, a small coastal town wakes to
+          news that will reshape everything its residents believed
+          about each other. Over the course of a single day — from the
+          first ferry to the last — four lives quietly intersect:
+        </p>
+        <p>
+          A lighthouse keeper who has spent thirty years keeping a
+          secret from the town he loves. A young soldier returning to
+          a home that no longer feels like his. A mother navigating
+          the slow unraveling of a marriage she thought was safe.
+          And a stranger who arrives with a small leather bag and the
+          weight of something long unsaid.
+        </p>
+        <p>
+          E. M. Hale writes with extraordinary restraint, letting
+          silence do as much work as dialogue. The result is a novel
+          that feels less written than remembered — a book about the
+          small hours we keep, the people we think we know, and the
+          moments that change everything.
+        </p>
+      </div>
+    </div>
+
+    <!-- Panel: Details -->
+    <div class="bk_book_tab_panel" data-panel="details">
+      <div class="bk_book_panel_details">
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Title</span>
+          <span class="bk_book_meta_value">The Quiet Hour</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Author</span>
+          <span class="bk_book_meta_value">E. M. Hale</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Genre</span>
+          <span class="bk_book_meta_value">Literary Fiction</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Pages</span>
+          <span class="bk_book_meta_value">348</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Language</span>
+          <span class="bk_book_meta_value">English</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Publisher</span>
+          <span class="bk_book_meta_value">Libravia Press</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Publication Date</span>
+          <span class="bk_book_meta_value">March 12, 2024</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Format</span>
+          <span class="bk_book_meta_value">Hardcover, Paperback, eBook</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">ISBN</span>
+          <span class="bk_book_meta_value">978-1-2345-6789-0</span>
+        </div>
+        <div class="bk_book_meta_item">
+          <span class="bk_book_meta_label">Dimensions</span>
+          <span class="bk_book_meta_value">5.5 × 8.5 inches</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: Reviews -->
+    <div class="bk_book_tab_panel" data-panel="reviews">
+      <div class="bk_book_panel_reviews">
+
+        <!-- Review 1 -->
+        <article class="bk_review_card">
+          <div class="bk_review_head">
+            <div class="bk_review_avatar">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80&auto=format&fit=crop"
+                alt="Sarah Mitchell"
+                loading="lazy"
+              >
+            </div>
+            <div class="bk_review_meta">
+              <span class="bk_review_name">Sarah Mitchell</span>
+              <span class="bk_review_role">Book Lover · London</span>
+            </div>
+            <span class="bk_review_date">Two weeks ago</span>
+          </div>
+          <div class="bk_review_stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="bk_review_text">
+            One of those rare books that makes you want to reread the
+            last page immediately. Hale writes with extraordinary
+            restraint and feeling.
+          </p>
+        </article>
+
+        <!-- Review 2 -->
+        <article class="bk_review_card">
+          <div class="bk_review_head">
+            <div class="bk_review_avatar">
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80&auto=format&fit=crop"
+                alt="Daniel Carter"
+                loading="lazy"
+              >
+            </div>
+            <div class="bk_review_meta">
+              <span class="bk_review_name">Daniel Carter</span>
+              <span class="bk_review_role">Regular Reader · Toronto</span>
+            </div>
+            <span class="bk_review_date">One month ago</span>
+          </div>
+          <div class="bk_review_stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="bk_review_text">
+            I read it in one sitting. The structure — four lives, one
+            day — sounds gimmicky but it works beautifully. The prose
+            is what stays with you.
+          </p>
+        </article>
+
+        <!-- Review 3 -->
+        <article class="bk_review_card">
+          <div class="bk_review_head">
+            <div class="bk_review_avatar">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80&auto=format&fit=crop"
+                alt="Amelia Brooks"
+                loading="lazy"
+              >
+            </div>
+            <div class="bk_review_meta">
+              <span class="bk_review_name">Amelia Brooks</span>
+              <span class="bk_review_role">Book Club Host · New York</span>
+            </div>
+            <span class="bk_review_date">Two months ago</span>
+          </div>
+          <div class="bk_review_stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <p class="bk_review_text">
+            A wonderful book for discussion. Our club spent two hours
+            on the last chapter alone. Highly recommended.
+          </p>
+        </article>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     RELATED BOOKS
+     ============================================================ -->
+<section class="bk_related">
+  <div class="bk_related_container">
+
+    <div class="bk_related_header">
+      <div>
+        <span class="bk_related_label">You Might Also Like</span>
+        <h2 class="bk_related_title">More from the Same Shelf</h2>
+      </div>
+      <a href="books.html?c=fiction" class="bk_related_viewall">
+        <span>View All Fiction</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="bk_related_grid">
+
+      <!-- Related 1 -->
+      <a href="book.html?id=2" class="bk_related_card">
+        <div class="bk_related_cover">
+          <div class="bk_related_cover_bg bk_related_cover_1"></div>
+          <img
+            class="bk_related_cover_img"
+            src="https://covers.openlibrary.org/b/id/10909258-L.jpg"
+            alt="Slow Mornings"
+            loading="lazy"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_related_cover_spine"></span>
+        </div>
+        <div class="bk_related_info">
+          <span class="bk_related_tag">Essays</span>
+          <h3 class="bk_related_name">Slow Mornings</h3>
+          <span class="bk_related_author">by R. Okafor</span>
+          <span class="bk_related_price">$19.50</span>
+        </div>
+      </a>
+
+      <!-- Related 2 -->
+      <a href="book.html?id=3" class="bk_related_card">
+        <div class="bk_related_cover">
+          <div class="bk_related_cover_bg bk_related_cover_2"></div>
+          <img
+            class="bk_related_cover_img"
+            src="https://covers.openlibrary.org/b/id/8231856-L.jpg"
+            alt="Paper & Rain"
+            loading="lazy"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_related_cover_spine"></span>
+        </div>
+        <div class="bk_related_info">
+          <span class="bk_related_tag">Poetry</span>
+          <h3 class="bk_related_name">Paper &amp; Rain</h3>
+          <span class="bk_related_author">by S. Marlow</span>
+          <span class="bk_related_price">$16.00</span>
+        </div>
+      </a>
+
+      <!-- Related 3 -->
+      <a href="book.html?id=4" class="bk_related_card">
+        <div class="bk_related_cover">
+          <div class="bk_related_cover_bg bk_related_cover_3"></div>
+          <img
+            class="bk_related_cover_img"
+            src="https://covers.openlibrary.org/b/id/240727-L.jpg"
+            alt="The Long Arch"
+            loading="lazy"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_related_cover_spine"></span>
+        </div>
+        <div class="bk_related_info">
+          <span class="bk_related_tag">History</span>
+          <h3 class="bk_related_name">The Long Arch</h3>
+          <span class="bk_related_author">by A. Deshmukh</span>
+          <span class="bk_related_price">$28.00</span>
+        </div>
+      </a>
+
+      <!-- Related 4 -->
+      <a href="book.html?id=5" class="bk_related_card">
+        <div class="bk_related_cover">
+          <div class="bk_related_cover_bg bk_related_cover_4"></div>
+          <img
+            class="bk_related_cover_img"
+            src="https://covers.openlibrary.org/b/id/8739161-L.jpg"
+            alt="The Ninth Gate"
+            loading="lazy"
+            onerror="this.style.display='none';"
+          >
+          <span class="bk_related_cover_spine"></span>
+        </div>
+        <div class="bk_related_info">
+          <span class="bk_related_tag">Fantasy</span>
+          <h3 class="bk_related_name">The Ninth Gate</h3>
+          <span class="bk_related_author">by L. Arano</span>
+          <span class="bk_related_price">$22.00</span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="bk_footer">
+  <div class="bk_footer_container">
+
+    <div class="bk_footer_grid">
+
+      <div class="bk_footer_brand">
+        <a href="index.html" class="bk_footer_logo">Libravia</a>
+        <span class="bk_footer_tagline">A quiet place to read</span>
+        <p class="bk_footer_about">
+          A premium digital bookstore for readers who value calm,
+          craft, and the feeling of a good page. Books curated with
+          intention — not algorithms.
+        </p>
+        <div class="bk_footer_social">
+          <a href="#" class="bk_footer_social_link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="bk_footer_social_link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="bk_footer_social_link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="bk_footer_social_link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+        </div>
+      </div>
+
+      <nav class="bk_footer_col">
+        <h4 class="bk_footer_col_title">Browse</h4>
+        <ul class="bk_footer_list">
+          <li><a href="books.html" class="bk_footer_link">All Books</a></li>
+          <li><a href="categories.html" class="bk_footer_link">Categories</a></li>
+          <li><a href="bestsellers.html" class="bk_footer_link">Best Sellers</a></li>
+          <li><a href="authors.html" class="bk_footer_link">Authors</a></li>
+        </ul>
+      </nav>
+
+      <nav class="bk_footer_col">
+        <h4 class="bk_footer_col_title">Categories</h4>
+        <ul class="bk_footer_list">
+          <li><a href="categories.html?c=fiction" class="bk_footer_link">Fiction</a></li>
+          <li><a href="categories.html?c=nonfiction" class="bk_footer_link">Non-Fiction</a></li>
+          <li><a href="categories.html?c=business" class="bk_footer_link">Business</a></li>
+          <li><a href="categories.html?c=fantasy" class="bk_footer_link">Fantasy</a></li>
+        </ul>
+      </nav>
+
+      <nav class="bk_footer_col">
+        <h4 class="bk_footer_col_title">Company</h4>
+        <ul class="bk_footer_list">
+          <li><a href="about.html" class="bk_footer_link">About</a></li>
+          <li><a href="contact.html" class="bk_footer_link">Contact</a></li>
+          <li><a href="careers.html" class="bk_footer_link">Careers</a></li>
+          <li><a href="press.html" class="bk_footer_link">Press</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="bk_footer_bottom">
+      <p class="bk_footer_copyright">© 2025 Libravia. All rights reserved.</p>
+      <div class="bk_footer_legal">
+        <a href="privacy.html" class="bk_footer_legal_link">Privacy</a>
+        <span class="bk_footer_legal_divider">·</span>
+        <a href="terms.html" class="bk_footer_legal_link">Terms</a>
+        <span class="bk_footer_legal_divider">·</span>
+        <a href="cookies.html" class="bk_footer_legal_link">Cookies</a>
+      </div>
+      <p class="bk_footer_credit">Made with care in the quiet hours.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============================================================
+     TABS
+     ============================================================ */
+  var tabButtons = document.querySelectorAll('.bk_book_tab_btn');
+  var tabPanels = document.querySelectorAll('.bk_book_tab_panel');
+
+  tabButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = this.dataset.tab;
+
+      tabButtons.forEach(function (b) {
+        b.classList.remove('bk_tab_active');
+      });
+      this.classList.add('bk_tab_active');
+
+      tabPanels.forEach(function (panel) {
+        panel.classList.remove('bk_tab_visible');
+      });
+
+      var activePanel = document.querySelector('[data-panel="' + target + '"]');
+      if (activePanel) {
+        // Force reflow so animation replays
+        void activePanel.offsetWidth;
+        activePanel.classList.add('bk_tab_visible');
+      }
+    });
+  });
+
+  /* ============================================================
+     WISHLIST BUTTON
+     ============================================================ */
+  var wishlistBtn = document.getElementById('bk_wishlist');
+  if (wishlistBtn) {
+    wishlistBtn.addEventListener('click', function () {
+      this.classList.toggle('bk_wishlist_active');
+      var icon = this.querySelector('i');
+      if (icon) {
+        if (this.classList.contains('bk_wishlist_active')) {
+          icon.classList.remove('fa-regular');
+          icon.classList.add('fa-solid');
+        } else {
+          icon.classList.remove('fa-solid');
+          icon.classList.add('fa-regular');
+        }
+      }
+    });
+  }
+
+  /* ============================================================
+     SHARE BUTTON
+     ============================================================ */
+  var shareBtn = document.getElementById('bk_share');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function () {
+      var url = window.location.href;
+      var title = document.title;
+
+      if (navigator.share) {
+        navigator.share({
+          title: title,
+          url: url
+        }).catch(function () {
+          // User cancelled — no action needed
+        });
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function () {
+          var icon = shareBtn.querySelector('i');
+          if (icon) {
+            var originalClass = icon.className;
+            icon.className = 'fa-solid fa-check';
+            setTimeout(function () {
+              icon.className = originalClass;
+            }, 1600);
+          }
+        });
+      }
+    });
+  }
+
+  /* ============================================================
+     READ SAMPLE (scrolls to the description tab as a demo)
+     ============================================================ */
+  var readSampleBtn = document.getElementById('bk_read_sample');
+  if (readSampleBtn) {
+    readSampleBtn.addEventListener('click', function () {
+      var descTab = document.querySelector('[data-tab="description"]');
+      if (descTab) {
+        descTab.click();
+        var tabsSection = document.querySelector('.bk_book_tabs');
+        if (tabsSection) {
+          tabsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  }
+
+  /* ============================================================
+     NAVBAR SCROLL STATE
+     ============================================================ */
+  var navbar = document.querySelector('.bk_navbar');
+  if (navbar) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 20) {
+        navbar.style.background = 'rgba(249, 250, 245, 0.96)';
+        navbar.style.boxShadow = '0 2px 12px rgba(31, 41, 55, 0.06)';
+      } else {
+        navbar.style.background = 'rgba(249, 250, 245, 0.9)';
+        navbar.style.boxShadow = '0 1px 2px rgba(31, 41, 55, 0.03)';
+      }
+    }, { passive: true });
+  }
+
+})();
+</script>
+
+</body>
+</html>
