@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Libravia</title>
+  <meta name="description" content="Libravia is a premium digital bookstore built for readers who value calm, craft, and the feeling of a good page. Learn the story behind the studio.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/about.css">
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header id="bk_navbar" class="bk_navbar">
+  <div class="bk_navbar_inner">
+
+    <!-- LEFT: Brand -->
+    <a href="index.php" class="bk_brand">
+      <span class="bk_logo">Libravia</span>
+      <span class="bk_tagline">A quiet place to read</span>
+    </a>
+
+    <!-- CENTER: Navigation -->
+    <nav class="bk_nav" id="bk_nav">
+      <a href="index.html" class="bk_nav_item bk_active">Home</a>
+      <a href="books.html" class="bk_nav_item">Books</a>
+      <a href="categories.html" class="bk_nav_item">Categories</a>
+      <a href="about.html" class="bk_nav_item">About</a>
+      <a href="contact.html" class="bk_nav_item">Contact</a>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="bk_actions">
+      <button class="bk_search_icon" aria-label="Search books" id="bk_search_btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <a href="login.html" class="bk_signin">Sign In</a>
+
+      <a href="books.html" class="bk_nav_cta">Explore Books</a>
+
+      <button class="bk_hamburger" id="bk_hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="bk_bar"></span>
+        <span class="bk_bar"></span>
+        <span class="bk_bar"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="bk_mobile_panel" id="bk_mobile_panel">
+    <div class="bk_mobile_inner">
+      <a href="index.html" class="bk_nav_item bk_active">Home</a>
+      <a href="books.html" class="bk_nav_item">Books</a>
+      <a href="categories.html" class="bk_nav_item">Categories</a>
+      <a href="about.html" class="bk_nav_item">About</a>
+      <a href="contact.html" class="bk_nav_item">Contact</a>
+
+      <div class="bk_mobile_actions">
+        <a href="login.html" class="bk_mobile_signin">Sign In</a>
+        <a href="books.html" class="bk_nav_cta bk_mobile_cta">Explore Books</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH PANEL -->
+  <div class="bk_search_panel" id="bk_search_panel">
+    <div class="bk_search_inner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        type="text"
+        class="bk_search_input"
+        placeholder="Search by title, author, or ISBN…"
+        aria-label="Search books"
+      >
+      <button class="bk_search_close" id="bk_search_close" aria-label="Close search">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main role="main">
+
+    <!-- Breadcrumb -->
+    <nav class="bk_breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html" class="bk_breadcrumb_link">Home</a>
+      <span class="bk_breadcrumb_sep" aria-hidden="true">
+        <i class="fa-solid fa-chevron-right"></i>
+      </span>
+      <span class="bk_breadcrumb_current" aria-current="page">About</span>
+    </nav>
+
+    <!-- ============================================================
+         HERO — Story headline
+         ============================================================ -->
+    <section class="bk_about_hero" aria-label="About Libravia">
+
+      <div class="bk_about_hero_inner">
+
+        <div class="bk_about_hero_content">
+          <span class="bk_about_label">Our Story</span>
+
+          <h1 class="bk_about_title">
+            A quiet place to read,<br>
+            built for people who<br>
+            still love books.
+          </h1>
+
+          <p class="bk_about_lead">
+            Libravia is a premium digital bookstore — designed to feel
+            like walking into a calm library rather than scrolling
+            through an endless catalog. We curate books the way a good
+            bookseller would: slowly, with care, and with taste.
+          </p>
+
+          <div class="bk_about_hero_meta">
+            <span class="bk_about_meta_item">
+              <strong>12,000+</strong> titles
+            </span>
+            <span class="bk_about_meta_divider" aria-hidden="true"></span>
+            <span class="bk_about_meta_item">
+              <strong>240+</strong> authors
+            </span>
+            <span class="bk_about_meta_divider" aria-hidden="true"></span>
+            <span class="bk_about_meta_item">
+              <strong>Est. 2020</strong>
+            </span>
+          </div>
+        </div>
+
+        <div class="bk_about_hero_visual" aria-hidden="true">
+          <div class="bk_about_stack">
+            <article class="bk_about_book bk_about_book_1">
+              <div class="bk_about_book_cover bk_about_cover_1">
+                <span class="bk_about_book_genre">Fiction</span>
+                <span class="bk_about_book_title">The Quiet Hour</span>
+                <span class="bk_about_book_author">E. M. Hale</span>
+              </div>
+            </article>
+
+            <article class="bk_about_book bk_about_book_2">
+              <div class="bk_about_book_cover bk_about_cover_2">
+                <span class="bk_about_book_genre">Essays</span>
+                <span class="bk_about_book_title">Slow Mornings</span>
+                <span class="bk_about_book_author">R. Okafor</span>
+              </div>
+            </article>
+
+            <article class="bk_about_book bk_about_book_3">
+              <div class="bk_about_book_cover bk_about_cover_3">
+                <span class="bk_about_book_genre">Poetry</span>
+                <span class="bk_about_book_title">Paper &amp; Rain</span>
+                <span class="bk_about_book_author">S. Marlow</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         VALUES — three quiet principles
+         ============================================================ -->
+    <section class="bk_about_values" aria-label="Our values">
+
+      <div class="bk_about_values_inner">
+
+        <header class="bk_about_values_header">
+          <span class="bk_about_label">What We Believe</span>
+          <h2 class="bk_about_values_title">
+            Three principles, one quiet shelf.
+          </h2>
+        </header>
+
+        <div class="bk_about_values_grid">
+
+          <article class="bk_about_value">
+            <span class="bk_about_value_index">01</span>
+            <h3 class="bk_about_value_name">Curated, not algorithmic</h3>
+            <p class="bk_about_value_text">
+              Every title on Libravia is chosen by a person who has read
+              it. We don't chase trends — we chase books that stay with
+              you long after the last page.
+            </p>
+          </article>
+
+          <article class="bk_about_value">
+            <span class="bk_about_value_index">02</span>
+            <h3 class="bk_about_value_name">Quiet by design</h3>
+            <p class="bk_about_value_text">
+              No popups, no countdown timers, no aggressive marketing.
+              The interface is built to disappear so the books can stay
+              in focus.
+            </p>
+          </article>
+
+          <article class="bk_about_value">
+            <span class="bk_about_value_index">03</span>
+            <h3 class="bk_about_value_name">Built for the long read</h3>
+            <p class="bk_about_value_text">
+              We design for readers who return, not one-time visitors.
+              Every detail — from typography to motion — is tuned for
+              slow, repeated use.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         STORY — editorial two-column with visual
+         ============================================================ -->
+    <section class="bk_about_story" aria-label="The story behind Libravia">
+
+      <div class="bk_about_story_inner">
+
+        <div class="bk_about_story_visual" aria-hidden="true">
+          <div class="bk_about_story_frame">
+            <div class="bk_about_story_photo">
+              <img
+                src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=900&q=80&auto=format&fit=crop"
+                alt="A quiet reading corner"
+                loading="lazy"
+                decoding="async"
+                onerror="this.style.display='none'; this.parentElement.classList.add('bk_about_photo_fallback');"
+              >
+            </div>
+            <span class="bk_about_story_quote" aria-hidden="true">"</span>
+          </div>
+        </div>
+
+        <div class="bk_about_story_content">
+          <span class="bk_about_label">The Beginning</span>
+
+          <h2 class="bk_about_story_title">
+            It started as a shelf<br>
+            for our own books.
+          </h2>
+
+          <p class="bk_about_story_text">
+            Libravia began in 2020 as a personal shelf — a small
+            collection of books we kept recommending to friends and
+            couldn't find anywhere else online. Eventually, that shelf
+            became a store, and that store became a studio.
+          </p>
+
+          <p class="bk_about_story_text">
+            We're still small on purpose. Every book is read before
+            it's listed. Every collection is hand-built. And every
+            reader who writes to us gets a reply from a person, not
+            a system.
+          </p>
+
+          <div class="bk_about_story_signature">
+            <span class="bk_about_signature_name">— The Libravia Team</span>
+            <span class="bk_about_signature_role">Curators · Since 2020</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         NUMBERS — quiet stat row
+         ============================================================ -->
+    <section class="bk_about_numbers" aria-label="Libravia in numbers">
+
+      <div class="bk_about_numbers_inner">
+
+        <div class="bk_about_number">
+          <span class="bk_about_number_value">12,000+</span>
+          <span class="bk_about_number_label">Titles curated</span>
+        </div>
+
+        <div class="bk_about_number">
+          <span class="bk_about_number_value">240+</span>
+          <span class="bk_about_number_label">Authors featured</span>
+        </div>
+
+        <div class="bk_about_number">
+          <span class="bk_about_number_value">38</span>
+          <span class="bk_about_number_label">Countries reached</span>
+        </div>
+
+        <div class="bk_about_number">
+          <span class="bk_about_number_value">4.9</span>
+          <span class="bk_about_number_label">Average rating</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         CTA — warm invitation
+         ============================================================ -->
+    <section class="bk_about_cta_wrap" aria-label="Explore books">
+      <div class="bk_about_cta">
+        <div class="bk_about_cta_content">
+          <span class="bk_about_cta_label">Find Your Next Read</span>
+          <h2 class="bk_about_cta_title">
+            The shelf is open.
+          </h2>
+          <p class="bk_about_cta_text">
+            Browse the full collection, or start with a category that
+            feels like home.
+          </p>
+          <div class="bk_about_cta_actions">
+            <a href="books.html" class="bk_about_cta_btn bk_about_cta_btn_primary">
+              <span>Browse All Books</span>
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="categories.html" class="bk_about_cta_btn bk_about_cta_btn_ghost">
+              <span>See Categories</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="bk_footer" role="contentinfo">
+    <div class="bk_footer_container">
+
+      <div class="bk_footer_grid">
+
+        <div class="bk_footer_brand">
+          <a href="index.html" class="bk_footer_logo">Libravia</a>
+          <span class="bk_footer_tagline">A quiet place to read</span>
+          <p class="bk_footer_about">
+            A premium digital bookstore for readers who value calm,
+            craft, and the feeling of a good page. Books curated with
+            intention — not algorithms.
+          </p>
+          <div class="bk_footer_social">
+            <a href="#" class="bk_footer_social_link" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="bk_footer_social_link" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" class="bk_footer_social_link" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" class="bk_footer_social_link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <nav class="bk_footer_col" aria-label="Browse">
+          <h4 class="bk_footer_col_title">Browse</h4>
+          <ul class="bk_footer_list">
+            <li><a href="books.html" class="bk_footer_link">All Books</a></li>
+            <li><a href="categories.html" class="bk_footer_link">Categories</a></li>
+            <li><a href="bestsellers.html" class="bk_footer_link">Best Sellers</a></li>
+            <li><a href="authors.html" class="bk_footer_link">Authors</a></li>
+          </ul>
+        </nav>
+
+        <nav class="bk_footer_col" aria-label="Categories">
+          <h4 class="bk_footer_col_title">Categories</h4>
+          <ul class="bk_footer_list">
+            <li><a href="books.html?c=fiction" class="bk_footer_link">Fiction</a></li>
+            <li><a href="books.html?c=nonfiction" class="bk_footer_link">Non-Fiction</a></li>
+            <li><a href="books.html?c=business" class="bk_footer_link">Business</a></li>
+            <li><a href="books.html?c=fantasy" class="bk_footer_link">Fantasy</a></li>
+          </ul>
+        </nav>
+
+        <nav class="bk_footer_col" aria-label="Company">
+          <h4 class="bk_footer_col_title">Company</h4>
+          <ul class="bk_footer_list">
+            <li><a href="about.html" class="bk_footer_link">About</a></li>
+            <li><a href="contact.html" class="bk_footer_link">Contact</a></li>
+            <li><a href="careers.html" class="bk_footer_link">Careers</a></li>
+            <li><a href="press.html" class="bk_footer_link">Press</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="bk_footer_bottom">
+        <p class="bk_footer_copyright">© 2025 Libravia. All rights reserved.</p>
+        <div class="bk_footer_legal">
+          <a href="privacy.html" class="bk_footer_legal_link">Privacy</a>
+          <span class="bk_footer_legal_divider" aria-hidden="true">·</span>
+          <a href="terms.html" class="bk_footer_legal_link">Terms</a>
+          <span class="bk_footer_legal_divider" aria-hidden="true">·</span>
+          <a href="cookies.html" class="bk_footer_legal_link">Cookies</a>
+        </div>
+        <p class="bk_footer_credit">Made with care in the quiet hours.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/about.js"></script>
+
+</body>
+</html>
